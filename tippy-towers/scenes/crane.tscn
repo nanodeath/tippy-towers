@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d2ytku27cc5of"]
+[gd_scene load_steps=10 format=3 uid="uid://d2ytku27cc5of"]
 
 [ext_resource type="Script" path="res://scripts/crane.gd" id="1_dp2g1"]
 [ext_resource type="Texture2D" uid="uid://p5f1hvknc1bl" path="res://icon.svg" id="2_curog"]
@@ -8,17 +8,24 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aahc5"]
 size = Vector2(512, 64)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_0pyye"]
+radius = 4.0
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0eb5c"]
 size = Vector2(128, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mjl0t"]
 size = Vector2(128, 36)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rt02g"]
+size = Vector2(16, 320)
+
 [node name="Crane" type="CharacterBody2D"]
 collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_dp2g1")
 speed = 150
+move_up_speed = 100
 
 [node name="Sprite" type="Sprite2D" parent="."]
 scale = Vector2(4, 0.5)
@@ -26,38 +33,70 @@ texture = ExtResource("2_curog")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_aahc5")
+disabled = true
 
-[node name="PinJoint2D" type="PinJoint2D" parent="."]
-position = Vector2(0, 26)
+[node name="ChainAnchor" type="CharacterBody2D" parent="."]
+position = Vector2(0, 36)
+motion_mode = 1
+
+[node name="PinJoint2D" type="PinJoint2D" parent="ChainAnchor"]
+position = Vector2(0, -30)
 node_a = NodePath("..")
-node_b = NodePath("../ChainLink")
+node_b = NodePath("../../ChainLink")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChainAnchor"]
+shape = SubResource("CircleShape2D_0pyye")
 
 [node name="ChainLink" parent="." instance=ExtResource("3_1rkxp")]
-position = Vector2(0, 64)
+position = Vector2(0, 68)
 
 [node name="ConnectionToNext" parent="ChainLink" index="2"]
 node_b = NodePath("../../ChainLink2")
 
 [node name="ChainLink2" parent="." instance=ExtResource("3_1rkxp")]
-position = Vector2(0, 124)
+position = Vector2(0, 128)
 
 [node name="ConnectionToNext" parent="ChainLink2" index="2"]
 node_b = NodePath("../../ChainLink3")
 
 [node name="ChainLink3" parent="." instance=ExtResource("3_1rkxp")]
-position = Vector2(0, 184)
+position = Vector2(0, 188)
 
 [node name="ConnectionToNext" parent="ChainLink3" index="2"]
 node_b = NodePath("../../ChainLink4")
 
 [node name="ChainLink4" parent="." instance=ExtResource("3_1rkxp")]
-position = Vector2(0, 244)
+position = Vector2(0, 248)
 
 [node name="ConnectionToNext" parent="ChainLink4" index="2"]
+node_b = NodePath("../../ChainLink5")
+
+[node name="ChainLink5" parent="." instance=ExtResource("3_1rkxp")]
+position = Vector2(0, 308)
+
+[node name="ConnectionToNext" parent="ChainLink5" index="2"]
+node_b = NodePath("../../ChainLink6")
+
+[node name="ChainLink6" parent="." instance=ExtResource("3_1rkxp")]
+position = Vector2(0, 368)
+
+[node name="ConnectionToNext" parent="ChainLink6" index="2"]
+node_b = NodePath("../../ChainLink7")
+
+[node name="ChainLink7" parent="." instance=ExtResource("3_1rkxp")]
+position = Vector2(0, 428)
+
+[node name="ConnectionToNext" parent="ChainLink7" index="2"]
+node_b = NodePath("../../ChainLink8")
+
+[node name="ChainLink8" parent="." instance=ExtResource("3_1rkxp")]
+position = Vector2(0, 488)
+
+[node name="ConnectionToNext" parent="ChainLink8" index="2"]
 node_b = NodePath("../../Magnet")
 
 [node name="Magnet" type="RigidBody2D" parent="."]
-position = Vector2(0, 281)
+position = Vector2(0, 521)
 collision_mask = 3
 mass = 5.0
 max_contacts_reported = 10
@@ -81,7 +120,19 @@ gravity = 2000.0
 position = Vector2(0, 26)
 shape = SubResource("RectangleShape2D_mjl0t")
 
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-24, -92)
+shape = SubResource("RectangleShape2D_rt02g")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(24, -92)
+shape = SubResource("RectangleShape2D_rt02g")
+
 [editable path="ChainLink"]
 [editable path="ChainLink2"]
 [editable path="ChainLink3"]
 [editable path="ChainLink4"]
+[editable path="ChainLink5"]
+[editable path="ChainLink6"]
+[editable path="ChainLink7"]
+[editable path="ChainLink8"]

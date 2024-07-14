@@ -6,6 +6,7 @@
 height = 64.0
 
 [node name="ChainLink" type="RigidBody2D"]
+show_behind_parent = true
 position = Vector2(0, 29)
 mass = 10.0
 angular_damp = 4.0
