@@ -2,6 +2,8 @@ class_name Crane extends CharacterBody2D
 
 @export var speed: int
 @export var move_up_speed: int
+@export var left_bound: Node2D
+@export var right_bound: Node2D
 @onready var chain_anchor = $ChainAnchor
 @onready var gravity_zone: Area2D = $Magnet/GravityZone
 @onready var magnet: RigidBody2D = $Magnet
@@ -35,6 +37,7 @@ func _physics_process(delta):
 		position.x -= speed * delta
 	elif Input.is_action_pressed("move_right"):
 		position.x += speed * delta
+	global_position.x = clampf(position.x, left_bound.global_position.x, right_bound.global_position.x)
 	
 	if Input.is_action_pressed("move_up"):
 		chain_anchor.position.y -= move_up_speed * delta

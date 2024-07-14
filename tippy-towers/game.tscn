@@ -122,5 +122,15 @@ texture = ExtResource("1_qfxxw")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Block3"]
 shape = SubResource("RectangleShape2D_kanau")
 
-[node name="Crane" parent="." instance=ExtResource("2_j786l")]
+[node name="Crane" parent="." node_paths=PackedStringArray("left_bound", "right_bound") instance=ExtResource("2_j786l")]
 position = Vector2(554, 32)
+left_bound = NodePath("../CraneLeftBound")
+right_bound = NodePath("../CraneRightBound")
+
+[node name="CraneLeftBound" type="Marker2D" parent="."]
+position = Vector2(180, 0)
+gizmo_extents = 32.0
+
+[node name="CraneRightBound" type="Marker2D" parent="."]
+position = Vector2(972, 0)
+gizmo_extents = 32.0

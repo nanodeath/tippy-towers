@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://lh2e6lwh838u" path="res://art/magnet.png" id="4_ge2jl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aahc5"]
-size = Vector2(512, 64)
+size = Vector2(256, 64)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0pyye"]
 radius = 4.0
@@ -35,7 +35,7 @@ speed = 150
 move_up_speed = 100
 
 [node name="Sprite" type="Sprite2D" parent="."]
-scale = Vector2(4, 0.5)
+scale = Vector2(2, 0.5)
 texture = ExtResource("2_curog")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
