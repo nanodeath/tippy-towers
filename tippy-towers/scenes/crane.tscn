@@ -42,8 +42,14 @@ texture = ExtResource("2_curog")
 shape = SubResource("RectangleShape2D_aahc5")
 disabled = true
 
+[node name="AnchorMax" type="Marker2D" parent="."]
+position = Vector2(0, 49)
+
+[node name="AnchorMin" type="Marker2D" parent="."]
+position = Vector2(0, -397)
+
 [node name="ChainAnchor" type="CharacterBody2D" parent="."]
-position = Vector2(0, 36)
+position = Vector2(0, -325)
 motion_mode = 1
 
 [node name="PinJoint2D" type="PinJoint2D" parent="ChainAnchor"]
@@ -55,55 +61,55 @@ node_b = NodePath("../../ChainLink")
 shape = SubResource("CircleShape2D_0pyye")
 
 [node name="ChainLink" parent="." instance=ExtResource("3_1rkxp")]
-position = Vector2(0, 68)
+position = Vector2(0, -293)
 
 [node name="ConnectionToNext" parent="ChainLink" index="2"]
 node_b = NodePath("../../ChainLink2")
 
 [node name="ChainLink2" parent="." instance=ExtResource("3_1rkxp")]
-position = Vector2(0, 128)
+position = Vector2(0, -233)
 
 [node name="ConnectionToNext" parent="ChainLink2" index="2"]
 node_b = NodePath("../../ChainLink3")
 
 [node name="ChainLink3" parent="." instance=ExtResource("3_1rkxp")]
-position = Vector2(0, 188)
+position = Vector2(0, -173)
 
 [node name="ConnectionToNext" parent="ChainLink3" index="2"]
 node_b = NodePath("../../ChainLink4")
 
 [node name="ChainLink4" parent="." instance=ExtResource("3_1rkxp")]
-position = Vector2(0, 248)
+position = Vector2(0, -113)
 
 [node name="ConnectionToNext" parent="ChainLink4" index="2"]
 node_b = NodePath("../../ChainLink5")
 
 [node name="ChainLink5" parent="." instance=ExtResource("3_1rkxp")]
-position = Vector2(0, 308)
+position = Vector2(0, -53)
 
 [node name="ConnectionToNext" parent="ChainLink5" index="2"]
 node_b = NodePath("../../ChainLink6")
 
 [node name="ChainLink6" parent="." instance=ExtResource("3_1rkxp")]
-position = Vector2(0, 368)
+position = Vector2(0, 7)
 
 [node name="ConnectionToNext" parent="ChainLink6" index="2"]
 node_b = NodePath("../../ChainLink7")
 
 [node name="ChainLink7" parent="." instance=ExtResource("3_1rkxp")]
-position = Vector2(0, 428)
+position = Vector2(0, 67)
 
 [node name="ConnectionToNext" parent="ChainLink7" index="2"]
 node_b = NodePath("../../ChainLink8")
 
 [node name="ChainLink8" parent="." instance=ExtResource("3_1rkxp")]
-position = Vector2(0, 488)
+position = Vector2(0, 127)
 
 [node name="ConnectionToNext" parent="ChainLink8" index="2"]
 node_b = NodePath("../../Magnet")
 
 [node name="Magnet" type="RigidBody2D" parent="."]
-position = Vector2(0, 521)
+position = Vector2(0, 160)
 collision_mask = 2
 
 [node name="Sprite" type="Sprite2D" parent="Magnet"]
@@ -154,11 +160,11 @@ position = Vector2(0, 32)
 shape = SubResource("RectangleShape2D_mjl0t")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(-24, -92)
+position = Vector2(-24, -110)
 shape = SubResource("RectangleShape2D_rt02g")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
-position = Vector2(24, -92)
+position = Vector2(24, -110)
 shape = SubResource("RectangleShape2D_rt02g")
 
 [editable path="ChainLink"]

@@ -6,6 +6,8 @@ class_name Crane extends CharacterBody2D
 @onready var gravity_zone: Area2D = $Magnet/GravityZone
 @onready var magnet: RigidBody2D = $Magnet
 @onready var sticky_bit = $Magnet/StickyBit
+@onready var anchor_min = $AnchorMin
+@onready var anchor_max = $AnchorMax
 
 var magnet_activated: bool = false
 
@@ -38,6 +40,7 @@ func _physics_process(delta):
 		chain_anchor.position.y -= move_up_speed * delta
 	elif Input.is_action_pressed("move_down"):
 		chain_anchor.position.y += move_up_speed * delta
+	chain_anchor.position.y = clampf(chain_anchor.position.y, anchor_min.position.y, anchor_max.position.y)
 	
 	var contact_count := magnet_direct_state.get_contact_count()
 	#print("Magnet contact: ", contact_count)

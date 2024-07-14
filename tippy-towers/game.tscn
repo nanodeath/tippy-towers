@@ -15,6 +15,41 @@ size = Vector2(128, 128)
 
 [node name="Game" type="Node2D"]
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="MagnetStatus" type="HBoxContainer" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+script = ExtResource("3_ebv6g")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/MarginContainer/MagnetStatus"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Magnet Activated:"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Status" type="RichTextLabel" parent="CanvasLayer/MarginContainer/MagnetStatus"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Off"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
 [node name="Ground" type="StaticBody2D" parent="."]
 position = Vector2(611, 633)
 
@@ -26,8 +61,32 @@ texture = ExtResource("1_qfxxw")
 position = Vector2(0, -14)
 shape = SubResource("WorldBoundaryShape2D_yp3k8")
 
+[node name="RWall" type="StaticBody2D" parent="."]
+position = Vector2(1154, 488)
+rotation = -1.5708
+
+[node name="Sprite" type="Sprite2D" parent="RWall"]
+scale = Vector2(12.44, 0.239998)
+texture = ExtResource("1_qfxxw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RWall"]
+position = Vector2(0, -14)
+shape = SubResource("WorldBoundaryShape2D_yp3k8")
+
+[node name="LWall" type="StaticBody2D" parent="."]
+position = Vector2(7, 488)
+rotation = -4.71239
+
+[node name="Sprite" type="Sprite2D" parent="LWall"]
+scale = Vector2(12.44, 0.239998)
+texture = ExtResource("1_qfxxw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LWall"]
+position = Vector2(0, -14)
+shape = SubResource("WorldBoundaryShape2D_yp3k8")
+
 [node name="Block" type="RigidBody2D" parent="." groups=["junk"]]
-position = Vector2(545, 466)
+position = Vector2(252, 410)
 rotation = 0.332925
 collision_layer = 2
 collision_mask = 3
@@ -65,38 +124,3 @@ shape = SubResource("RectangleShape2D_kanau")
 
 [node name="Crane" parent="." instance=ExtResource("2_j786l")]
 position = Vector2(554, 32)
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 4
-theme_override_constants/margin_bottom = 4
-
-[node name="MagnetStatus" type="HBoxContainer" parent="CanvasLayer/MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 0
-script = ExtResource("3_ebv6g")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/MarginContainer/MagnetStatus"]
-layout_mode = 2
-size_flags_vertical = 0
-text = "Magnet Activated:"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
-
-[node name="Status" type="RichTextLabel" parent="CanvasLayer/MarginContainer/MagnetStatus"]
-layout_mode = 2
-size_flags_vertical = 0
-text = "Off"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
