@@ -24,11 +24,37 @@ shape = SubResource("WorldBoundaryShape2D_yp3k8")
 [node name="Block" type="RigidBody2D" parent="."]
 position = Vector2(545, 466)
 rotation = 0.332925
+collision_layer = 2
+collision_mask = 3
 
 [node name="Sprite" type="Sprite2D" parent="Block"]
 texture = ExtResource("1_qfxxw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Block"]
+shape = SubResource("RectangleShape2D_kanau")
+
+[node name="Block2" type="RigidBody2D" parent="."]
+position = Vector2(866, 438)
+rotation = 0.332925
+collision_layer = 2
+collision_mask = 3
+
+[node name="Sprite" type="Sprite2D" parent="Block2"]
+texture = ExtResource("1_qfxxw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Block2"]
+shape = SubResource("RectangleShape2D_kanau")
+
+[node name="Block3" type="RigidBody2D" parent="."]
+position = Vector2(883, 277)
+rotation = 0.332925
+collision_layer = 2
+collision_mask = 3
+
+[node name="Sprite" type="Sprite2D" parent="Block3"]
+texture = ExtResource("1_qfxxw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Block3"]
 shape = SubResource("RectangleShape2D_kanau")
 
 [node name="Crane" parent="." instance=ExtResource("2_j786l")]
