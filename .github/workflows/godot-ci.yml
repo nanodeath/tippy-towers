@@ -5,12 +5,12 @@ env:
   # The Godot version of the export template you're using. Should match the container.image versions below. 
   GODOT_VERSION: 4.2.2
   # The name of the file to generate.
-  EXPORT_NAME: clicky-clicker
+  EXPORT_NAME: tippy-towers
   # The name of your game directory relative to the project root.
-  PROJECT_PATH: clicky-clicker
+  PROJECT_PATH: tippy-towers
   # See https://itch.io/docs/butler/pushing.html for more information here.
   # This is the user/game you're uploading.
-  ITCHIO_PROJECT_NAME: nanodeath/clicky-clicker
+  ITCHIO_PROJECT_NAME: nanodeath/tippy-towers
   ITCHIO_CHANNEL_WEB: web
   
 # To auth pushes to itch.io, you'll also need to set a BUTLER_API_KEY variable 
@@ -56,7 +56,7 @@ jobs:
     needs: build-web
     runs-on: ubuntu-latest
     # Only run deploy on mainline instead of all branches, like the build step.
-    if: github.ref == 'refs/heads/mainline'
+    if: github.ref == 'refs/heads/mainline' && false
     permissions:
       # Grants permissions required to write to gh-pages branch.
       contents: write
