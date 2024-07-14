@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://chss5a6j3kny4"]
+
+[ext_resource type="Texture2D" uid="uid://p5f1hvknc1bl" path="res://icon.svg" id="1_qfxxw"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yp3k8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kanau"]
+size = Vector2(128, 128)
+
+[node name="Game" type="Node2D"]
+
+[node name="Ground" type="StaticBody2D" parent="."]
+position = Vector2(611, 633)
+
+[node name="Sprite" type="Sprite2D" parent="Ground"]
+scale = Vector2(12.44, 0.239998)
+texture = ExtResource("1_qfxxw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+position = Vector2(0, -14)
+shape = SubResource("WorldBoundaryShape2D_yp3k8")
+
+[node name="Block" type="RigidBody2D" parent="."]
+position = Vector2(563, 110)
+rotation = 0.332925
+
+[node name="Sprite" type="Sprite2D" parent="Block"]
+texture = ExtResource("1_qfxxw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Block"]
+shape = SubResource("RectangleShape2D_kanau")

@@ -10,15 +10,10 @@ config_version=5
 
 [application]
 
-config/name="ClickyClicker"
-config/description="The amazing demo app Clicky Clicker, the shallow unbeatable game!"
+config/name="Tippy-towers"
 run/main_scene="res://game.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
-
-[display]
-
-window/stretch/mode="canvas_items"
 
 [rendering]
 
