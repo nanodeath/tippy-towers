@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://chss5a6j3kny4"]
+[gd_scene load_steps=9 format=3 uid="uid://chss5a6j3kny4"]
 
 [ext_resource type="Texture2D" uid="uid://p5f1hvknc1bl" path="res://icon.svg" id="1_qfxxw"]
 [ext_resource type="PackedScene" uid="uid://d2ytku27cc5of" path="res://scenes/crane.tscn" id="2_j786l"]
@@ -12,6 +12,12 @@ absorbent = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kanau"]
 size = Vector2(128, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uhjy8"]
+size = Vector2(510, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7f8of"]
+size = Vector2(13, 56)
 
 [node name="Game" type="Node2D"]
 
@@ -49,6 +55,9 @@ text = "Off"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
 
 [node name="Ground" type="StaticBody2D" parent="."]
 position = Vector2(611, 633)
@@ -134,3 +143,17 @@ gizmo_extents = 32.0
 [node name="CraneRightBound" type="Marker2D" parent="."]
 position = Vector2(972, 0)
 gizmo_extents = 32.0
+
+[node name="Platform" type="CharacterBody2D" parent="."]
+position = Vector2(251, 584)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
+shape = SubResource("RectangleShape2D_uhjy8")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Platform"]
+position = Vector2(248.5, -20)
+shape = SubResource("RectangleShape2D_7f8of")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform"]
+scale = Vector2(4, 0.125)
+texture = ExtResource("1_qfxxw")
