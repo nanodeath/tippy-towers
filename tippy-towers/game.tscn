@@ -64,7 +64,7 @@ texture = ExtResource("1_qfxxw")
 shape = SubResource("RectangleShape2D_kanau")
 
 [node name="Crane" parent="." instance=ExtResource("2_j786l")]
-position = Vector2(554, 52)
+position = Vector2(554, 32)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
