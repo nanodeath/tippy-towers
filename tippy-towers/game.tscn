@@ -1,15 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://chss5a6j3kny4"]
+[gd_scene load_steps=5 format=3 uid="uid://chss5a6j3kny4"]
 
 [ext_resource type="Texture2D" uid="uid://p5f1hvknc1bl" path="res://icon.svg" id="1_qfxxw"]
-[ext_resource type="Script" path="res://scripts/crane.gd" id="2_50bie"]
+[ext_resource type="PackedScene" uid="uid://d2ytku27cc5of" path="res://scenes/crane.tscn" id="2_j786l"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yp3k8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kanau"]
 size = Vector2(128, 128)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_aahc5"]
-size = Vector2(512, 64)
 
 [node name="Game" type="Node2D"]
 
@@ -34,15 +31,5 @@ texture = ExtResource("1_qfxxw")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Block"]
 shape = SubResource("RectangleShape2D_kanau")
 
-[node name="Crane" type="CharacterBody2D" parent="."]
+[node name="Crane" parent="." instance=ExtResource("2_j786l")]
 position = Vector2(554, 52)
-motion_mode = 1
-script = ExtResource("2_50bie")
-speed = 200
-
-[node name="Sprite" type="Sprite2D" parent="Crane"]
-scale = Vector2(4, 0.5)
-texture = ExtResource("1_qfxxw")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Crane"]
-shape = SubResource("RectangleShape2D_aahc5")

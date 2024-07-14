@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://tlivsympbxyw"]
+
+[ext_resource type="Texture2D" uid="uid://d4hi4pytwekru" path="res://art/chain_link.png" id="1_bo6su"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ehmj2"]
+height = 64.0
+
+[node name="ChainLink" type="RigidBody2D"]
+position = Vector2(0, 29)
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_bo6su")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_ehmj2")
+
+[node name="ConnectionToNext" type="PinJoint2D" parent="."]
+position = Vector2(0, 28)
+node_a = NodePath("..")

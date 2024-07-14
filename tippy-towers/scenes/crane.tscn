@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://d2ytku27cc5of"]
+
+[ext_resource type="Script" path="res://scripts/crane.gd" id="1_dp2g1"]
+[ext_resource type="Texture2D" uid="uid://p5f1hvknc1bl" path="res://icon.svg" id="2_curog"]
+[ext_resource type="PackedScene" uid="uid://tlivsympbxyw" path="res://scenes/chain_link.tscn" id="3_1rkxp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aahc5"]
+size = Vector2(512, 64)
+
+[node name="Crane" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_dp2g1")
+speed = 200
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(4, 0.5)
+texture = ExtResource("2_curog")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_aahc5")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+position = Vector2(0, 26)
+node_a = NodePath("..")
+node_b = NodePath("../ChainLink")
+
+[node name="ChainLink" parent="." instance=ExtResource("3_1rkxp")]
+position = Vector2(0, 64)
+
+[node name="ConnectionToNext" parent="ChainLink" index="2"]
+node_b = NodePath("../../ChainLink2")
+
+[node name="ChainLink2" parent="." instance=ExtResource("3_1rkxp")]
+position = Vector2(0, 124)
+
+[node name="ConnectionToNext" parent="ChainLink2" index="2"]
+node_b = NodePath("../../ChainLink3")
+
+[node name="ChainLink3" parent="." instance=ExtResource("3_1rkxp")]
+position = Vector2(0, 184)
+
+[node name="ConnectionToNext" parent="ChainLink3" index="2"]
+node_b = NodePath("../../ChainLink4")
+
+[node name="ChainLink4" parent="." instance=ExtResource("3_1rkxp")]
+position = Vector2(0, 244)
+
+[editable path="ChainLink"]
+[editable path="ChainLink2"]
+[editable path="ChainLink3"]
