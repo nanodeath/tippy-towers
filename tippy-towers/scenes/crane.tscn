@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://d2ytku27cc5of"]
+[gd_scene load_steps=12 format=3 uid="uid://d2ytku27cc5of"]
 
 [ext_resource type="Script" path="res://scripts/crane.gd" id="1_dp2g1"]
 [ext_resource type="Texture2D" uid="uid://p5f1hvknc1bl" path="res://icon.svg" id="2_curog"]
@@ -11,16 +11,23 @@ size = Vector2(512, 64)
 [sub_resource type="CircleShape2D" id="CircleShape2D_0pyye"]
 radius = 4.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ngqpb"]
+size = Vector2(2, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xaaf2"]
+size = Vector2(124, 8)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0eb5c"]
-size = Vector2(128, 16)
+size = Vector2(124, 2)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mjl0t"]
-size = Vector2(128, 36)
+size = Vector2(128, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rt02g"]
 size = Vector2(16, 320)
 
 [node name="Crane" type="CharacterBody2D"]
+collision_layer = 4
 collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_dp2g1")
@@ -97,27 +104,53 @@ node_b = NodePath("../../Magnet")
 
 [node name="Magnet" type="RigidBody2D" parent="."]
 position = Vector2(0, 521)
-collision_mask = 3
-mass = 5.0
-max_contacts_reported = 10
-contact_monitor = true
-angular_damp = 10.0
+collision_mask = 2
 
 [node name="Sprite" type="Sprite2D" parent="Magnet"]
 texture = ExtResource("4_ge2jl")
 
-[node name="MainShape" type="CollisionShape2D" parent="Magnet"]
+[node name="Left" type="CollisionShape2D" parent="Magnet"]
+position = Vector2(-63, 5)
+shape = SubResource("RectangleShape2D_ngqpb")
+
+[node name="Right" type="CollisionShape2D" parent="Magnet"]
+position = Vector2(63, 5)
+shape = SubResource("RectangleShape2D_ngqpb")
+
+[node name="Top" type="CollisionShape2D" parent="Magnet"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_xaaf2")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Magnet"]
+position = Vector2(-52, 7)
+node_a = NodePath("..")
+node_b = NodePath("../StickyBit")
+
+[node name="PinJoint2D2" type="PinJoint2D" parent="Magnet"]
+position = Vector2(52, 7)
+node_a = NodePath("..")
+node_b = NodePath("../StickyBit")
+
+[node name="StickyBit" type="RigidBody2D" parent="Magnet"]
+collision_mask = 2
+max_contacts_reported = 8
+contact_monitor = true
+
+[node name="Shape" type="CollisionShape2D" parent="Magnet/StickyBit"]
+position = Vector2(0, 7)
 shape = SubResource("RectangleShape2D_0eb5c")
 
 [node name="GravityZone" type="Area2D" parent="Magnet"]
 collision_mask = 2
 gravity_space_override = 1
-gravity_point_center = Vector2(0, -1)
-gravity_direction = Vector2(0, -1)
-gravity = 2000.0
+gravity_point = true
+gravity_point_unit_distance = 64.0
+gravity_point_center = Vector2(0, 10)
+gravity_direction = Vector2(0, 10)
+gravity = 4000.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Magnet/GravityZone"]
-position = Vector2(0, 26)
+position = Vector2(0, 32)
 shape = SubResource("RectangleShape2D_mjl0t")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]

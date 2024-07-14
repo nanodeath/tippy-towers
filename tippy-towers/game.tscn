@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://chss5a6j3kny4"]
+[gd_scene load_steps=7 format=3 uid="uid://chss5a6j3kny4"]
 
 [ext_resource type="Texture2D" uid="uid://p5f1hvknc1bl" path="res://icon.svg" id="1_qfxxw"]
 [ext_resource type="PackedScene" uid="uid://d2ytku27cc5of" path="res://scenes/crane.tscn" id="2_j786l"]
 [ext_resource type="Script" path="res://scripts/ui/magnet_status.gd" id="3_ebv6g"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yp3k8"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mbx68"]
+rough = true
+absorbent = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kanau"]
 size = Vector2(128, 128)
@@ -22,11 +26,12 @@ texture = ExtResource("1_qfxxw")
 position = Vector2(0, -14)
 shape = SubResource("WorldBoundaryShape2D_yp3k8")
 
-[node name="Block" type="RigidBody2D" parent="."]
+[node name="Block" type="RigidBody2D" parent="." groups=["junk"]]
 position = Vector2(545, 466)
 rotation = 0.332925
 collision_layer = 2
 collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_mbx68")
 
 [node name="Sprite" type="Sprite2D" parent="Block"]
 texture = ExtResource("1_qfxxw")
@@ -34,7 +39,7 @@ texture = ExtResource("1_qfxxw")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Block"]
 shape = SubResource("RectangleShape2D_kanau")
 
-[node name="Block2" type="RigidBody2D" parent="."]
+[node name="Block2" type="RigidBody2D" parent="." groups=["junk"]]
 position = Vector2(866, 438)
 rotation = 0.332925
 collision_layer = 2
@@ -46,7 +51,7 @@ texture = ExtResource("1_qfxxw")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Block2"]
 shape = SubResource("RectangleShape2D_kanau")
 
-[node name="Block3" type="RigidBody2D" parent="."]
+[node name="Block3" type="RigidBody2D" parent="." groups=["junk"]]
 position = Vector2(883, 277)
 rotation = 0.332925
 collision_layer = 2
