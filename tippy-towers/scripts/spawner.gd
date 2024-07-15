@@ -1,7 +1,6 @@
 class_name Spawner extends Node2D
 
 @export var to_spawn: Array[PackedScene]
-@export var interval_seconds: float
 @onready var spawn_timer = %SpawnTimer
 
 func _ready():
