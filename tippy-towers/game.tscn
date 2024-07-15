@@ -1,9 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://chss5a6j3kny4"]
+[gd_scene load_steps=19 format=3 uid="uid://chss5a6j3kny4"]
 
 [ext_resource type="Texture2D" uid="uid://p5f1hvknc1bl" path="res://icon.svg" id="1_qfxxw"]
 [ext_resource type="Script" path="res://scripts/ui/timer_display.gd" id="2_ha0md"]
 [ext_resource type="PackedScene" uid="uid://d2ytku27cc5of" path="res://scenes/crane.tscn" id="2_j786l"]
 [ext_resource type="Script" path="res://scripts/ui/magnet_status.gd" id="3_ebv6g"]
+[ext_resource type="Script" path="res://scripts/ui/height_achieved.gd" id="3_k1vkn"]
 [ext_resource type="Script" path="res://scripts/highest_point_detector.gd" id="3_ooxjs"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="3_qibdg"]
 [ext_resource type="PackedScene" uid="uid://b3cuxi3hana1g" path="res://scenes/junk/box_128_128.tscn" id="4_7rvxo"]
@@ -87,6 +88,29 @@ fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
+[node name="HeightAchieved" type="HBoxContainer" parent="CanvasLayer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+alignment = 1
+script = ExtResource("3_k1vkn")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/MarginContainer/HeightAchieved"]
+layout_mode = 2
+text = "Height: "
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="HeightPixels" type="RichTextLabel" parent="CanvasLayer/MarginContainer/HeightAchieved"]
+layout_mode = 2
+text = "0
+"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
 [node name="CameraTarget" type="Marker2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(576, 224)
@@ -100,6 +124,10 @@ texture = ExtResource("1_qfxxw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
 shape = SubResource("RectangleShape2D_x3he1")
+
+[node name="GroundMarker" type="Marker2D" parent="Ground"]
+unique_name_in_owner = true
+position = Vector2(0, -16)
 
 [node name="CraneLeftBound" type="Marker2D" parent="."]
 position = Vector2(180, 0)
@@ -143,7 +171,7 @@ to_spawn = Array[PackedScene]([ExtResource("4_7rvxo"), ExtResource("8_jedqf"), E
 [node name="SpawnTimer" type="Node" parent="Camera2D/Platform"]
 unique_name_in_owner = true
 script = ExtResource("6_fuj8g")
-initial_time = 5.0
+initial_time = 15.0
 
 [node name="HighestPointDetector" type="ShapeCast2D" parent="Camera2D"]
 position = Vector2(280, -324)

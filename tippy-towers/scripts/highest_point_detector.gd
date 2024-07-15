@@ -10,6 +10,5 @@ func _process(delta):
 		var highest_point := get_collision_point(0) as Vector2
 		if first_collision.sleeping:
 			%Camera2D.move_up(highest_point)
-			#camera_target.position.y = min(highest_point.y, camera_target.position.y)
-			#%Camera2D.position = camera_target.position
+			%HeightAchieved.update_height(-(highest_point.y - %GroundMarker.global_position.y))
 	pass
