@@ -1,17 +1,20 @@
-[gd_scene load_steps=9 format=3 uid="uid://chss5a6j3kny4"]
+[gd_scene load_steps=13 format=3 uid="uid://chss5a6j3kny4"]
 
 [ext_resource type="Texture2D" uid="uid://p5f1hvknc1bl" path="res://icon.svg" id="1_qfxxw"]
+[ext_resource type="Script" path="res://scripts/ui/timer_display.gd" id="2_ha0md"]
 [ext_resource type="PackedScene" uid="uid://d2ytku27cc5of" path="res://scenes/crane.tscn" id="2_j786l"]
 [ext_resource type="Script" path="res://scripts/ui/magnet_status.gd" id="3_ebv6g"]
+[ext_resource type="PackedScene" uid="uid://b3cuxi3hana1g" path="res://scenes/junk/box_128_128.tscn" id="4_7rvxo"]
+[ext_resource type="Script" path="res://scripts/spawner.gd" id="5_ur8yp"]
+[ext_resource type="Script" path="res://scripts/spawn_timer.gd" id="6_fuj8g"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yp3k8"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mbx68"]
-rough = true
-absorbent = true
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8u318"]
+friction = 0.1
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kanau"]
-size = Vector2(128, 128)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c81ok"]
+size = Vector2(382, 30)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uhjy8"]
 size = Vector2(510, 16)
@@ -56,6 +59,26 @@ fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
+[node name="TimerDisplay" type="HBoxContainer" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+script = ExtResource("2_ha0md")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/MarginContainer/TimerDisplay"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Next delivery in:"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Time" type="RichTextLabel" parent="CanvasLayer/MarginContainer/TimerDisplay"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 
@@ -71,8 +94,8 @@ position = Vector2(0, -14)
 shape = SubResource("WorldBoundaryShape2D_yp3k8")
 
 [node name="RWall" type="StaticBody2D" parent="."]
-position = Vector2(1154, 488)
-rotation = -1.5708
+position = Vector2(1146, 488)
+rotation = -1.53589
 
 [node name="Sprite" type="Sprite2D" parent="RWall"]
 scale = Vector2(12.44, 0.239998)
@@ -83,53 +106,24 @@ position = Vector2(0, -14)
 shape = SubResource("WorldBoundaryShape2D_yp3k8")
 
 [node name="LWall" type="StaticBody2D" parent="."]
-position = Vector2(7, 488)
+modulate = Color(0.25, 0.25, 0.25, 1)
+position = Vector2(7, 504)
 rotation = -4.71239
+physics_material_override = SubResource("PhysicsMaterial_8u318")
 
 [node name="Sprite" type="Sprite2D" parent="LWall"]
-scale = Vector2(12.44, 0.239998)
+position = Vector2(-78, -7.53167e-05)
+scale = Vector2(3, 0.24)
 texture = ExtResource("1_qfxxw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LWall"]
-position = Vector2(0, -14)
-shape = SubResource("WorldBoundaryShape2D_yp3k8")
+position = Vector2(-77, -5.62668e-05)
+shape = SubResource("RectangleShape2D_c81ok")
 
-[node name="Block" type="RigidBody2D" parent="." groups=["junk"]]
-position = Vector2(252, 410)
-rotation = 0.332925
-collision_layer = 2
-collision_mask = 3
-physics_material_override = SubResource("PhysicsMaterial_mbx68")
-
-[node name="Sprite" type="Sprite2D" parent="Block"]
-texture = ExtResource("1_qfxxw")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Block"]
-shape = SubResource("RectangleShape2D_kanau")
-
-[node name="Block2" type="RigidBody2D" parent="." groups=["junk"]]
-position = Vector2(866, 438)
-rotation = 0.332925
-collision_layer = 2
-collision_mask = 3
-
-[node name="Sprite" type="Sprite2D" parent="Block2"]
-texture = ExtResource("1_qfxxw")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Block2"]
-shape = SubResource("RectangleShape2D_kanau")
-
-[node name="Block3" type="RigidBody2D" parent="." groups=["junk"]]
-position = Vector2(883, 277)
-rotation = 0.332925
-collision_layer = 2
-collision_mask = 3
-
-[node name="Sprite" type="Sprite2D" parent="Block3"]
-texture = ExtResource("1_qfxxw")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Block3"]
-shape = SubResource("RectangleShape2D_kanau")
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="LWall"]
+position = Vector2(-316, 179)
+rotation = 1.9362
+shape = SubResource("RectangleShape2D_c81ok")
 
 [node name="Crane" parent="." node_paths=PackedStringArray("left_bound", "right_bound") instance=ExtResource("2_j786l")]
 position = Vector2(554, 32)
@@ -157,3 +151,14 @@ shape = SubResource("RectangleShape2D_7f8of")
 [node name="Sprite2D" type="Sprite2D" parent="Platform"]
 scale = Vector2(4, 0.125)
 texture = ExtResource("1_qfxxw")
+
+[node name="Spawner" type="Node2D" parent="."]
+position = Vector2(-273, 50)
+script = ExtResource("5_ur8yp")
+to_spawn = Array[PackedScene]([ExtResource("4_7rvxo")])
+interval_seconds = 1.0
+
+[node name="SpawnTimer" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("6_fuj8g")
+initial_time = 15.0

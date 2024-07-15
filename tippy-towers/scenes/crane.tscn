@@ -111,6 +111,7 @@ node_b = NodePath("../../Magnet")
 [node name="Magnet" type="RigidBody2D" parent="."]
 position = Vector2(0, 160)
 collision_mask = 2
+mass = 20.0
 
 [node name="Sprite" type="Sprite2D" parent="Magnet"]
 texture = ExtResource("4_ge2jl")
