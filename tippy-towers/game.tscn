@@ -351,7 +351,6 @@ physics_material_override = SubResource("PhysicsMaterial_8u318")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Camera2D/Chute"]
 position = Vector2(-737, -144)
 rotation = -2.77619
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_c81ok")
 
 [node name="PackageLostZone" type="Area2D" parent="."]
