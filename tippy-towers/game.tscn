@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://chss5a6j3kny4"]
+[gd_scene load_steps=20 format=3 uid="uid://chss5a6j3kny4"]
 
 [ext_resource type="Texture2D" uid="uid://p5f1hvknc1bl" path="res://icon.svg" id="1_qfxxw"]
 [ext_resource type="Script" path="res://scripts/ui/timer_display.gd" id="2_ha0md"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scripts/ui/height_achieved.gd" id="3_k1vkn"]
 [ext_resource type="Script" path="res://scripts/highest_point_detector.gd" id="3_ooxjs"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="3_qibdg"]
+[ext_resource type="Script" path="res://scripts/ui/version_label.gd" id="4_6dyxt"]
 [ext_resource type="PackedScene" uid="uid://b3cuxi3hana1g" path="res://scenes/junk/box_128_128.tscn" id="4_7rvxo"]
 [ext_resource type="Script" path="res://scripts/spawner.gd" id="5_ur8yp"]
 [ext_resource type="Script" path="res://scripts/spawn_timer.gd" id="6_fuj8g"]
@@ -110,6 +111,15 @@ text = "0
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
+
+[node name="VersionLabel" type="RichTextLabel" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("4_6dyxt")
 
 [node name="CameraTarget" type="Marker2D" parent="."]
 unique_name_in_owner = true
