@@ -95,7 +95,7 @@ func _physics_process(delta):
 				obj.remove_collision_exception_with(sticky_bit)
 				timer.queue_free()
 			)
-			add_child(timer)
+			obj.add_child(timer)
 		fused_with_junk.clear()
 
 func _update_magnet():
