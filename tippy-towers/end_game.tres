@@ -1,0 +1,7 @@
+[gd_resource type="Theme" format=3 uid="uid://dnnomnic02f36"]
+
+[resource]
+Big/base_type = &"RichTextLabel"
+Big/font_sizes/normal_font_size = 48
+GridContainer/constants/h_separation = 20
+RichTextLabel/font_sizes/normal_font_size = 24
