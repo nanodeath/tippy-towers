@@ -19,6 +19,9 @@ var contacts: int = 0
 var magnet_direct_state: PhysicsDirectBodyState2D
 var fused_with_junk: Array[RigidBody2D] = []
 
+var current_speed := 0.0
+var tween_speed := 0.05
+
 func _ready():
 	_update_magnet()
 	magnet_direct_state = PhysicsServer2D.body_get_direct_state(sticky_bit.get_rid())
@@ -34,10 +37,20 @@ func _process(delta):
 
 func _physics_process(delta):
 	if Input.is_action_pressed("move_left"):
-		position.x -= speed * delta
+		#position.x -= speed * delta
+		current_speed = lerpf(current_speed, -speed * delta, tween_speed)
 	elif Input.is_action_pressed("move_right"):
-		position.x += speed * delta
-	global_position.x = clampf(position.x, left_bound.global_position.x, right_bound.global_position.x)
+		#position.x += speed * delta
+		#print(current_speed, ",", speed * delta, ",", tween_speed, " -> ", lerpf(current_speed, speed * delta, tween_speed))
+		current_speed = lerpf(current_speed, speed * delta, tween_speed)
+		#print("current_speed updated to ", current_speed)
+		#print(current_speed, ",", speed, ",", delta, ",", tween_speed)
+	else:
+		current_speed = lerpf(current_speed, 0, tween_speed)
+		if absf(current_speed) < 0.01:
+			current_speed = 0
+	#current_speed = clamp(current_speed, -speed * delta, speed * delta)
+	global_position.x = clampf(position.x + current_speed, left_bound.global_position.x, right_bound.global_position.x)
 	
 	if Input.is_action_pressed("move_up"):
 		chain_anchor.position.y -= move_up_speed * delta
