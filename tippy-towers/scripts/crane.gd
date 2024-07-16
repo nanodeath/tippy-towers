@@ -69,7 +69,6 @@ func _physics_process(delta):
 				# two contacts
 				#print("Connecting to ", obj)
 				if not fused_with_junk.has(obj):
-					print("Fused with ", obj)
 					var other := obj as RigidBody2D
 					other.reparent(magnet)
 					other.freeze_mode = RigidBody2D.FREEZE_MODE_KINEMATIC

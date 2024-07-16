@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://chss5a6j3kny4"]
+[gd_scene load_steps=29 format=3 uid="uid://chss5a6j3kny4"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_7hxrq"]
 [ext_resource type="Texture2D" uid="uid://p5f1hvknc1bl" path="res://icon.svg" id="1_qfxxw"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://c4can45bm31l1" path="res://scenes/junk/box_64_64.tscn" id="9_hseeu"]
 [ext_resource type="Script" path="res://scripts/package_lost_zone.gd" id="14_runno"]
 [ext_resource type="Script" path="res://scripts/packages_scored.gd" id="21_e7mvv"]
+[ext_resource type="Script" path="res://scripts/junk_freezer.gd" id="22_jykiw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x3he1"]
 size = Vector2(384, 32)
@@ -367,3 +368,7 @@ shape = SubResource("RectangleShape2D_0467r")
 [node name="PackagesScored" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("21_e7mvv")
+
+[node name="JunkFreezer" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("22_jykiw")

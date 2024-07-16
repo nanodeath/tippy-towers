@@ -4,6 +4,8 @@ class_name HighestPointDetector extends ShapeCast2D
 var current_height: int = 0
 var maximum_height: int = 0
 
+signal new_highest_junk(box: RigidBody2D)
+
 func _process(delta):
 	var distance_to_collision = get_closest_collision_unsafe_fraction()
 	#print("distance_to_collision: ", distance_to_collision, ", in px: ", distance_to_collision * target_position.y)
@@ -15,7 +17,7 @@ func _process(delta):
 		maximum_height = max(maximum_height, height)
 		if first_collision.sleeping and not first_collision.is_in_group("scored"):
 			first_collision.add_to_group("scored")
+			emit_signal("new_highest_junk", first_collision)
 			get_node("/root/Game/PackagesScored").packages_scored += 1
 			%Camera2D.move_up(highest_point)
 			%HeightAchieved.update_height(-(highest_point.y - %GroundMarker.global_position.y))
-	pass
