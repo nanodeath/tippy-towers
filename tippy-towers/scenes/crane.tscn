@@ -34,6 +34,14 @@ script = ExtResource("1_dp2g1")
 speed = 150
 move_up_speed = 100
 
+[node name="ColorRect" type="ColorRect" parent="."]
+show_behind_parent = true
+offset_left = -30.0
+offset_top = -48.0
+offset_right = 30.0
+offset_bottom = 1152.0
+color = Color(0.13, 0.0715, 0.0715, 1)
+
 [node name="Sprite" type="Sprite2D" parent="."]
 modulate = Color(0.65, 0, 0, 1)
 texture = ExtResource("2_tib5a")
@@ -167,6 +175,9 @@ shape = SubResource("RectangleShape2D_rt02g")
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
 position = Vector2(24, -96)
 shape = SubResource("RectangleShape2D_rt02g")
+
+[node name="Background" type="Sprite2D" parent="."]
+visible = false
 
 [editable path="ChainLink"]
 [editable path="ChainLink2"]

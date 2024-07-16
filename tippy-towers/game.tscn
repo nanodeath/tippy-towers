@@ -26,9 +26,6 @@
 [ext_resource type="Script" path="res://scripts/packages_scored.gd" id="21_e7mvv"]
 [ext_resource type="Script" path="res://scripts/junk_freezer.gd" id="22_jykiw"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_x3he1"]
-size = Vector2(384, 32)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uhjy8"]
 size = Vector2(510, 16)
 
@@ -40,6 +37,9 @@ size = Vector2(382, 30)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8u318"]
 friction = 0.1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x3he1"]
+size = Vector2(384, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0467r"]
 size = Vector2(10000, 500)
@@ -274,41 +274,9 @@ texture = ExtResource("8_2q1k6")
 unique_name_in_owner = true
 position = Vector2(576, 224)
 
-[node name="Ground" type="StaticBody2D" parent="."]
-position = Vector2(856, 632)
-
-[node name="Sprite" type="Sprite2D" parent="Ground"]
-scale = Vector2(3, 0.25)
-texture = ExtResource("1_qfxxw")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
-shape = SubResource("RectangleShape2D_x3he1")
-
-[node name="GroundMarker" type="Marker2D" parent="Ground"]
-unique_name_in_owner = true
-position = Vector2(0, -16)
-
-[node name="CraneLeftBound" type="Marker2D" parent="."]
-position = Vector2(180, 0)
-gizmo_extents = 32.0
-
-[node name="CraneRightBound" type="Marker2D" parent="."]
-position = Vector2(972, 0)
-gizmo_extents = 32.0
-
-[node name="Crane" parent="." node_paths=PackedStringArray("left_bound", "right_bound") instance=ExtResource("2_j786l")]
-unique_name_in_owner = true
-position = Vector2(569, 32)
-left_bound = NodePath("../CraneLeftBound")
-right_bound = NodePath("../CraneRightBound")
-
-[node name="SpawnTimer" type="Node" parent="."]
-unique_name_in_owner = true
-script = ExtResource("6_fuj8g")
-initial_time = 15.0
-
 [node name="Camera2D" type="Camera2D" parent="."]
 unique_name_in_owner = true
+z_index = 2
 position = Vector2(576, 324)
 position_smoothing_enabled = true
 script = ExtResource("3_qibdg")
@@ -366,6 +334,40 @@ physics_material_override = SubResource("PhysicsMaterial_8u318")
 position = Vector2(-737, -144)
 rotation = -2.77619
 shape = SubResource("RectangleShape2D_c81ok")
+
+[node name="Ground" type="StaticBody2D" parent="."]
+z_index = 1
+position = Vector2(856, 632)
+
+[node name="Sprite" type="Sprite2D" parent="Ground"]
+scale = Vector2(3, 0.25)
+texture = ExtResource("1_qfxxw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+shape = SubResource("RectangleShape2D_x3he1")
+
+[node name="GroundMarker" type="Marker2D" parent="Ground"]
+unique_name_in_owner = true
+position = Vector2(0, -16)
+
+[node name="CraneLeftBound" type="Marker2D" parent="."]
+position = Vector2(180, 0)
+gizmo_extents = 32.0
+
+[node name="CraneRightBound" type="Marker2D" parent="."]
+position = Vector2(972, 0)
+gizmo_extents = 32.0
+
+[node name="Crane" parent="." node_paths=PackedStringArray("left_bound", "right_bound") instance=ExtResource("2_j786l")]
+unique_name_in_owner = true
+position = Vector2(569, 32)
+left_bound = NodePath("../CraneLeftBound")
+right_bound = NodePath("../CraneRightBound")
+
+[node name="SpawnTimer" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("6_fuj8g")
+initial_time = 15.0
 
 [node name="PackageLostZone" type="Area2D" parent="."]
 unique_name_in_owner = true
