@@ -10,7 +10,7 @@ class_name Crane extends CharacterBody2D
 @onready var sticky_bit = $Magnet/StickyBit
 @onready var anchor_min = $AnchorMin
 @onready var anchor_max = $AnchorMax
-@onready var game := $/root/Game as Game
+@onready var game: Game
 
 var magnet_activated: bool = false
 
@@ -24,6 +24,7 @@ var current_speed := 0.0
 var tween_speed := 0.05
 
 func _ready():
+	game = get_node("/root/Game")
 	_update_magnet()
 	magnet_direct_state = PhysicsServer2D.body_get_direct_state(sticky_bit.get_rid())
 	
