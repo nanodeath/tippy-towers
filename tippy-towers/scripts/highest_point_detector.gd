@@ -13,7 +13,9 @@ func _process(delta):
 		var height = -(highest_point.y - %GroundMarker.global_position.y)
 		current_height = height
 		maximum_height = max(maximum_height, height)
-		if first_collision.sleeping:
+		if first_collision.sleeping and not first_collision.is_in_group("scored"):
+			first_collision.add_to_group("scored")
+			get_node("/root/Game/PackagesScored").packages_scored += 1
 			%Camera2D.move_up(highest_point)
 			%HeightAchieved.update_height(-(highest_point.y - %GroundMarker.global_position.y))
 	pass

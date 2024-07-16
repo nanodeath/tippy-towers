@@ -10,7 +10,7 @@ func _ready():
 
 func activate():
 	visible = true
-	packages_placed_count.text = "0"
+	packages_placed_count.text = str(%PackagesScored.packages_scored)
 	height_achieved_count.text = str(%HighestPointDetector.maximum_height)
 	var days := floori(%HighestPointDetector.maximum_height / 100)
 	days_since_last_accident_counter.text = str(days)
