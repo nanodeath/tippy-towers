@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://chss5a6j3kny4"]
+[gd_scene load_steps=32 format=3 uid="uid://chss5a6j3kny4"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_7hxrq"]
 [ext_resource type="Texture2D" uid="uid://p5f1hvknc1bl" path="res://icon.svg" id="1_qfxxw"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://c4can45bm31l1" path="res://scenes/junk/box_64_64.tscn" id="9_hseeu"]
 [ext_resource type="Script" path="res://scripts/package_lost_zone.gd" id="14_runno"]
 [ext_resource type="Script" path="res://scripts/spawner_group.gd" id="19_rpvsw"]
+[ext_resource type="PackedScene" uid="uid://cn2rra55iei73" path="res://scenes/junk/box_192_64.tscn" id="20_eaue4"]
 [ext_resource type="PackedScene" uid="uid://drapsryciml5g" path="res://scenes/junk/box_triangle_64_64.tscn" id="20_icsjf"]
 [ext_resource type="Script" path="res://scripts/packages_scored.gd" id="21_e7mvv"]
 [ext_resource type="Script" path="res://scripts/junk_freezer.gd" id="22_jykiw"]
@@ -333,8 +334,8 @@ to_spawn = Array[PackedScene]([ExtResource("4_7rvxo"), ExtResource("8_jedqf"), E
 
 [node name="Level2" type="Node" parent="Camera2D/Platform/Spawner"]
 script = ExtResource("19_rpvsw")
-to_spawn = Array[PackedScene]([ExtResource("4_7rvxo"), ExtResource("8_jedqf"), ExtResource("20_icsjf"), ExtResource("20_icsjf")])
-package_threshold = 4
+to_spawn = Array[PackedScene]([ExtResource("4_7rvxo"), ExtResource("8_jedqf"), ExtResource("20_eaue4"), ExtResource("20_icsjf")])
+package_threshold = 5
 
 [node name="HighestPointDetector" type="ShapeCast2D" parent="Camera2D"]
 unique_name_in_owner = true
