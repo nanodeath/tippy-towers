@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://chss5a6j3kny4"]
+[gd_scene load_steps=33 format=3 uid="uid://chss5a6j3kny4"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_7hxrq"]
 [ext_resource type="Texture2D" uid="uid://p5f1hvknc1bl" path="res://icon.svg" id="1_qfxxw"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://dffwuwa1tykyk" path="res://art/chalk_x_2.png" id="8_2q1k6"]
 [ext_resource type="PackedScene" uid="uid://b016ebofn2m51" path="res://scenes/junk/box_128_64.tscn" id="8_jedqf"]
 [ext_resource type="PackedScene" uid="uid://c4can45bm31l1" path="res://scenes/junk/box_64_64.tscn" id="9_hseeu"]
+[ext_resource type="Texture2D" uid="uid://ddne6po0kqwal" path="res://art/girder.png" id="12_0yopg"]
 [ext_resource type="Script" path="res://scripts/package_lost_zone.gd" id="14_runno"]
 [ext_resource type="Script" path="res://scripts/spawner_group.gd" id="19_rpvsw"]
 [ext_resource type="PackedScene" uid="uid://cn2rra55iei73" path="res://scenes/junk/box_192_64.tscn" id="20_eaue4"]
@@ -27,7 +28,7 @@
 [ext_resource type="Script" path="res://scripts/junk_freezer.gd" id="22_jykiw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uhjy8"]
-size = Vector2(510, 16)
+size = Vector2(506, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xbtjb"]
 size = Vector2(300, 10)
@@ -285,11 +286,16 @@ script = ExtResource("3_qibdg")
 position = Vector2(-325, 260)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Platform"]
+position = Vector2(-2, 8)
 shape = SubResource("RectangleShape2D_uhjy8")
 
 [node name="Sprite2D" type="Sprite2D" parent="Camera2D/Platform"]
-scale = Vector2(4, 0.125)
-texture = ExtResource("1_qfxxw")
+modulate = Color(0.88, 0, 0, 1)
+texture_repeat = 2
+position = Vector2(11, 8)
+texture = ExtResource("12_0yopg")
+region_enabled = true
+region_rect = Rect2(0, 0, 480, 32)
 
 [node name="Spawner" type="Node2D" parent="Camera2D/Platform"]
 position = Vector2(-524, -534)
@@ -314,11 +320,19 @@ collision_mask = 2
 script = ExtResource("3_ooxjs")
 
 [node name="LWall" type="StaticBody2D" parent="Camera2D"]
-modulate = Color(0.25, 0.25, 0.25, 1)
 position = Vector2(-569, 180)
 rotation = 1.5708
 
+[node name="Sprite2D" type="Sprite2D" parent="Camera2D/LWall"]
+modulate = Color(0.88, 0, 0, 1)
+texture_repeat = 2
+position = Vector2(-28, 1.0001)
+texture = ExtResource("12_0yopg")
+region_enabled = true
+region_rect = Rect2(0, 0, 480, 32)
+
 [node name="Sprite" type="Sprite2D" parent="Camera2D/LWall"]
+visible = false
 position = Vector2(-78, -7.53167e-05)
 scale = Vector2(3, 0.24)
 texture = ExtResource("1_qfxxw")
