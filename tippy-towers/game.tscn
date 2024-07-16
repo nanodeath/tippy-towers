@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://chss5a6j3kny4"]
+[gd_scene load_steps=35 format=3 uid="uid://chss5a6j3kny4"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_7hxrq"]
 [ext_resource type="Texture2D" uid="uid://p5f1hvknc1bl" path="res://icon.svg" id="1_qfxxw"]
@@ -26,6 +26,8 @@
 [ext_resource type="PackedScene" uid="uid://drapsryciml5g" path="res://scenes/junk/box_triangle_64_64.tscn" id="20_icsjf"]
 [ext_resource type="Script" path="res://scripts/packages_scored.gd" id="21_e7mvv"]
 [ext_resource type="Script" path="res://scripts/junk_freezer.gd" id="22_jykiw"]
+[ext_resource type="Texture2D" uid="uid://dw44np86218dw" path="res://art/ground_9.png" id="22_ufpke"]
+[ext_resource type="Texture2D" uid="uid://c0hgpxt6bq0e6" path="res://art/stripes.png" id="23_aiiov"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uhjy8"]
 size = Vector2(506, 32)
@@ -353,11 +355,34 @@ shape = SubResource("RectangleShape2D_c81ok")
 z_index = 1
 position = Vector2(856, 632)
 
+[node name="NinePatchRect" type="NinePatchRect" parent="Ground"]
+modulate = Color(0.81, 0.81, 0.81, 1)
+custom_minimum_size = Vector2(57.475, 0)
+offset_left = -192.0
+offset_top = -16.0
+offset_right = 192.0
+offset_bottom = 16.0
+texture = ExtResource("22_ufpke")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="Stripes" type="Sprite2D" parent="Ground"]
+texture_repeat = 2
+position = Vector2(-189, -13)
+texture = ExtResource("23_aiiov")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 380, 8)
+
 [node name="Sprite" type="Sprite2D" parent="Ground"]
+visible = false
 scale = Vector2(3, 0.25)
 texture = ExtResource("1_qfxxw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+visible = false
 shape = SubResource("RectangleShape2D_x3he1")
 
 [node name="GroundMarker" type="Marker2D" parent="Ground"]
