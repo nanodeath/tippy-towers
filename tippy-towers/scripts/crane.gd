@@ -10,7 +10,7 @@ class_name Crane extends CharacterBody2D
 @onready var sticky_bit = $Magnet/StickyBit
 @onready var anchor_min = $AnchorMin
 @onready var anchor_max = $AnchorMax
-@onready var game = $/root/Game
+@onready var game := $/root/Game as Game
 
 var magnet_activated: bool = false
 
@@ -31,16 +31,15 @@ func _ready():
 	sticky_bit.body_exited.connect(func(b): contacts -= 1)
 
 func _process(delta):
-	if game.is_game_over:
-		return
-	if Input.is_action_just_pressed("toggle_magnet"):
+	var is_game_over := game.is_game_over
+	if Input.is_action_just_pressed("toggle_magnet") and not is_game_over:
 		magnet_activated = !magnet_activated
 		emit_signal("magnet_changed", magnet_activated)
 		_update_magnet()
 	
-	if Input.is_action_pressed("move_left"):
+	if Input.is_action_pressed("move_left") and not is_game_over:
 		current_speed = lerpf(current_speed, -speed * delta, tween_speed)
-	elif Input.is_action_pressed("move_right"):
+	elif Input.is_action_pressed("move_right") and not is_game_over:
 		current_speed = lerpf(current_speed, speed * delta, tween_speed)
 	else:
 		current_speed = lerpf(current_speed, 0, tween_speed)
