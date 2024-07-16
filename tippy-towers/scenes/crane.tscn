@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://d2ytku27cc5of"]
+[gd_scene load_steps=16 format=3 uid="uid://d2ytku27cc5of"]
 
 [ext_resource type="Script" path="res://scripts/crane.gd" id="1_dp2g1"]
 [ext_resource type="Texture2D" uid="uid://cyed14anatvbx" path="res://art/crane.png" id="2_tib5a"]
 [ext_resource type="PackedScene" uid="uid://tlivsympbxyw" path="res://scenes/chain_link.tscn" id="3_1rkxp"]
 [ext_resource type="Texture2D" uid="uid://lh2e6lwh838u" path="res://art/magnet.png" id="4_ge2jl"]
+[ext_resource type="Texture2D" uid="uid://dhnd3n0ef70ct" path="res://art/status_light.png" id="5_v5xqx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aahc5"]
 size = Vector2(128, 96)
@@ -22,6 +23,33 @@ size = Vector2(124, 2)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mjl0t"]
 size = Vector2(128, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1h4fa"]
+atlas = ExtResource("5_v5xqx")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0lohp"]
+atlas = ExtResource("5_v5xqx")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2etnk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1h4fa")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0lohp")
+}],
+"loop": true,
+"name": &"on",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rt02g"]
 size = Vector2(16, 320)
@@ -167,6 +195,11 @@ gravity = 4000.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Magnet/GravityZone"]
 position = Vector2(0, 32)
 shape = SubResource("RectangleShape2D_mjl0t")
+
+[node name="Light" type="AnimatedSprite2D" parent="Magnet"]
+position = Vector2(0, -1)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_2etnk")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2(-24, -96)

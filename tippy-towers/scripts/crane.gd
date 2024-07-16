@@ -11,6 +11,7 @@ class_name Crane extends CharacterBody2D
 @onready var anchor_min = $AnchorMin
 @onready var anchor_max = $AnchorMax
 @onready var game: Game
+@onready var light = $Magnet/Light
 
 var magnet_activated: bool = false
 
@@ -99,8 +100,10 @@ func _physics_process(delta):
 func _update_magnet():
 	if magnet_activated:
 		gravity_zone.process_mode = Node.PROCESS_MODE_INHERIT
+		light.play("on")
 	else:
 		gravity_zone.process_mode = Node.PROCESS_MODE_DISABLED
+		light.play("default")
 
 func _body_entered(body: Node):
 	pass
