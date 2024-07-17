@@ -18,7 +18,7 @@ func spawn():
 	_update_current_group()
 	var instance := current_spawner_group.to_spawn.pick_random().instantiate() as Node2D
 	instance.position = position
-	instance.rotation = randf_range(0, PI * 2)
+	instance.rotation = randf_range(0, PI / 4)
 	add_sibling(instance)
 	packages_spawned += 1
 	emit_signal("package_spawned", packages_spawned)

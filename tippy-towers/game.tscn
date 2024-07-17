@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://chss5a6j3kny4"]
+[gd_scene load_steps=61 format=3 uid="uid://chss5a6j3kny4"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_7hxrq"]
 [ext_resource type="Texture2D" uid="uid://p5f1hvknc1bl" path="res://icon.svg" id="1_qfxxw"]
@@ -32,6 +32,7 @@
 [ext_resource type="Script" path="res://scripts/chute.gd" id="22_rjeew"]
 [ext_resource type="Texture2D" uid="uid://dw44np86218dw" path="res://art/ground_9.png" id="22_ufpke"]
 [ext_resource type="Texture2D" uid="uid://c0hgpxt6bq0e6" path="res://art/stripes.png" id="23_aiiov"]
+[ext_resource type="Texture2D" uid="uid://124hrj8box3j" path="res://art/sign_post.png" id="24_ynnvf"]
 [ext_resource type="Texture2D" uid="uid://dhnd3n0ef70ct" path="res://art/status_light.png" id="29_diou1"]
 [ext_resource type="Script" path="res://scripts/status_light.gd" id="30_fyiyi"]
 [ext_resource type="Texture2D" uid="uid://6uwmlnf1m6do" path="res://art/bright_light.png" id="30_sx8h4"]
@@ -67,7 +68,13 @@ size = Vector2(506, 32)
 size = Vector2(300, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c81ok"]
-size = Vector2(382, 30)
+size = Vector2(382, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yellv"]
+radius = 32.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ngu5h"]
+size = Vector2(16, 160)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8u318"]
 friction = 0.1
@@ -136,8 +143,11 @@ _data = {
 "spin": SubResource("Animation_0j4yf")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mv7qe"]
+size = Vector2(458.278, 32)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xbqhh"]
-size = Vector2(350, 100)
+size = Vector2(383.715, 100)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x3he1"]
 size = Vector2(384, 32)
@@ -458,7 +468,7 @@ collision_mask = 2
 script = ExtResource("3_ooxjs")
 
 [node name="LWall" type="StaticBody2D" parent="Camera2D"]
-position = Vector2(-569, 180)
+position = Vector2(-559, 180)
 rotation = 1.5708
 
 [node name="Sprite2D" type="Sprite2D" parent="Camera2D/LWall"]
@@ -469,15 +479,47 @@ texture = ExtResource("12_0yopg")
 region_enabled = true
 region_rect = Rect2(0, 0, 480, 32)
 
-[node name="Sprite" type="Sprite2D" parent="Camera2D/LWall"]
-visible = false
-position = Vector2(-78, -7.53167e-05)
-scale = Vector2(3, 0.24)
-texture = ExtResource("1_qfxxw")
+[node name="Sprite2D2" type="Sprite2D" parent="Camera2D/LWall"]
+modulate = Color(0.88, 0, 0, 1)
+texture_repeat = 2
+position = Vector2(-632, 1.00229)
+texture = ExtResource("12_0yopg")
+region_enabled = true
+region_rect = Rect2(0, 0, 480, 32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/LWall"]
-position = Vector2(-77, -5.62668e-05)
+position = Vector2(-77, 1.00028)
 shape = SubResource("RectangleShape2D_c81ok")
+
+[node name="DoorGuard" type="StaticBody2D" parent="Camera2D"]
+position = Vector2(-483, -323)
+rotation = -3.14159
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/DoorGuard"]
+rotation = -1.57079
+shape = SubResource("CircleShape2D_yellv")
+
+[node name="Door" type="RigidBody2D" parent="Camera2D"]
+position = Vector2(-536, -168)
+rotation = -3.14159
+collision_mask = 3
+mass = 0.03
+continuous_cd = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Camera2D/Door"]
+modulate = Color(0.71, 0.71, 0.71, 1)
+scale = Vector2(1, 2.5)
+texture = ExtResource("24_ynnvf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Door"]
+shape = SubResource("RectangleShape2D_ngu5h")
+
+[node name="DoorJoint" type="PinJoint2D" parent="Camera2D/Door"]
+position = Vector2(8.00011, 79)
+rotation = -1.57079
+node_a = NodePath("../../LWall")
+node_b = NodePath("..")
+disable_collision = false
 
 [node name="Chute" type="StaticBody2D" parent="Camera2D"]
 physics_material_override = SubResource("PhysicsMaterial_8u318")
@@ -485,7 +527,7 @@ script = ExtResource("22_rjeew")
 
 [node name="ChuteStatusLight" type="AnimatedSprite2D" parent="Camera2D/Chute"]
 unique_name_in_owner = true
-position = Vector2(-558, -236)
+position = Vector2(-544, -262)
 sprite_frames = SubResource("SpriteFrames_yhwqa")
 animation = &"on"
 script = ExtResource("30_fyiyi")
@@ -500,16 +542,16 @@ libraries = {
 autoplay = "spin"
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Camera2D/Chute"]
-position = Vector2(-737, -144)
+position = Vector2(-760, -156)
 rotation = -2.77619
-shape = SubResource("RectangleShape2D_c81ok")
+shape = SubResource("RectangleShape2D_mv7qe")
 
 [node name="ChuteArea" type="Area2D" parent="Camera2D/Chute"]
 position = Vector2(-677, -214)
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Chute/ChuteArea"]
-position = Vector2(-34, 6)
+position = Vector2(-18.281, 12.0904)
 rotation = 0.369644
 shape = SubResource("RectangleShape2D_xbqhh")
 debug_color = Color(8.66354e-07, 0.636253, 0.407196, 0.42)
