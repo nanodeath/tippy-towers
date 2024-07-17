@@ -24,3 +24,4 @@ func _update_current_group():
 		var spawner_group := c as SpawnerGroup
 		if packages_spawned >= spawner_group.package_threshold:
 			current_spawner_group = spawner_group
+			break

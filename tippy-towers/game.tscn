@@ -22,7 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://ddne6po0kqwal" path="res://art/girder.png" id="12_0yopg"]
 [ext_resource type="Script" path="res://scripts/package_lost_zone.gd" id="14_runno"]
 [ext_resource type="Script" path="res://scripts/spawner_group.gd" id="19_rpvsw"]
-[ext_resource type="PackedScene" path="res://scenes/junk/box_192_64.tscn" id="20_eaue4"]
+[ext_resource type="PackedScene" uid="uid://cn2rra55iei73" path="res://scenes/junk/box_192_64.tscn" id="20_eaue4"]
 [ext_resource type="PackedScene" uid="uid://usyl7xsoi0ur" path="res://scenes/junk/box_triangle_64_64.tscn" id="20_icsjf"]
 [ext_resource type="Script" path="res://scripts/packages_scored.gd" id="21_e7mvv"]
 [ext_resource type="Script" path="res://scripts/junk_freezer.gd" id="22_jykiw"]

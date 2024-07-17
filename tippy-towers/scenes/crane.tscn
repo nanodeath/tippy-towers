@@ -155,14 +155,17 @@ texture = ExtResource("4_ge2jl")
 [node name="Left" type="CollisionShape2D" parent="Magnet"]
 position = Vector2(-63, 5)
 shape = SubResource("RectangleShape2D_ngqpb")
+debug_color = Color(0.998147, 0, 0.149392, 0.42)
 
 [node name="Right" type="CollisionShape2D" parent="Magnet"]
 position = Vector2(63, 5)
 shape = SubResource("RectangleShape2D_ngqpb")
+debug_color = Color(0.998147, 0, 0.149392, 0.42)
 
 [node name="Top" type="CollisionShape2D" parent="Magnet"]
 position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_xaaf2")
+debug_color = Color(0.998147, 0, 0.149392, 0.42)
 
 [node name="PinJoint2D" type="PinJoint2D" parent="Magnet"]
 position = Vector2(-52, 7)
@@ -176,20 +179,22 @@ node_b = NodePath("../StickyBit")
 
 [node name="StickyBit" type="RigidBody2D" parent="Magnet"]
 collision_mask = 2
+continuous_cd = 2
 max_contacts_reported = 8
 contact_monitor = true
 
 [node name="Shape" type="CollisionShape2D" parent="Magnet/StickyBit"]
 position = Vector2(0, 7)
 shape = SubResource("RectangleShape2D_0eb5c")
+debug_color = Color(0, 0.645604, 0.256412, 0.42)
 
 [node name="GravityZone" type="Area2D" parent="Magnet"]
 collision_mask = 2
 gravity_space_override = 1
 gravity_point = true
 gravity_point_unit_distance = 64.0
-gravity_point_center = Vector2(0, 10)
-gravity_direction = Vector2(0, 10)
+gravity_point_center = Vector2(0, -24)
+gravity_direction = Vector2(0, -24)
 gravity = 4000.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Magnet/GravityZone"]
