@@ -4,11 +4,10 @@ class_name Crane extends CharacterBody2D
 @export var move_up_speed: int
 @export var left_bound: Node2D
 @export var right_bound: Node2D
-@export var junk_probes: Array[RayCast2D]
-
 @onready var chain_anchor = $ChainAnchor
 @onready var gravity_zone: Area2D = $Magnet/GravityZone
 @onready var magnet: RigidBody2D = $Magnet
+@onready var sticky_bit = $Magnet/StickyBit
 @onready var anchor_min = $AnchorMin
 @onready var anchor_max = $AnchorMax
 @onready var game: Game
@@ -18,6 +17,8 @@ var magnet_activated: bool = false
 
 signal magnet_changed(status: bool)
 
+var contacts: int = 0
+var magnet_direct_state: PhysicsDirectBodyState2D
 var fused_with_junk: Array[RigidBody2D] = []
 
 var current_speed := 0.0
@@ -26,6 +27,10 @@ var tween_speed := 0.05
 func _ready():
 	game = get_node("/root/Game")
 	_update_magnet()
+	magnet_direct_state = PhysicsServer2D.body_get_direct_state(sticky_bit.get_rid())
+	
+	sticky_bit.body_entered.connect(func(b): contacts += 1)
+	sticky_bit.body_exited.connect(func(b): contacts -= 1)
 
 func _process(delta):
 	var is_game_over := game.is_game_over
@@ -46,11 +51,6 @@ func _process(delta):
 func _physics_process(delta):
 	global_position.x = clampf(position.x + current_speed, left_bound.global_position.x, right_bound.global_position.x)
 	
-	var contacts := 0
-	for probe in junk_probes:
-		if probe.is_colliding():
-			contacts += 1
-	
 	if not game.is_game_over:
 		if Input.is_action_pressed("move_up"):
 			chain_anchor.position.y -= move_up_speed * delta
@@ -58,11 +58,12 @@ func _physics_process(delta):
 			chain_anchor.position.y += move_up_speed * delta
 		chain_anchor.position.y = clampf(chain_anchor.position.y, anchor_min.position.y, anchor_max.position.y)
 	
+	var contact_count := magnet_direct_state.get_contact_count()
 	#print("Magnet contact: ", contact_count)
-	if magnet_activated and contacts > 1:
+	if magnet_activated and contacts > 0:
 		var collisions := []
-		for probe in junk_probes:
-			var obj := probe.get_collider()
+		for i in contact_count:
+			var obj := magnet_direct_state.get_contact_collider_object(i) as Node
 			if not obj is PhysicsBody2D or not obj.is_in_group("junk"):
 				continue
 			#print("  collider obj: ", obj)
@@ -81,6 +82,7 @@ func _physics_process(delta):
 	if not magnet_activated and fused_with_junk.size() > 0:
 		for obj in fused_with_junk:
 			obj.add_collision_exception_with(magnet)
+			obj.add_collision_exception_with(sticky_bit)
 			obj.reparent(get_parent())
 			obj.freeze = false
 			obj.collision_layer = 1 << 1
@@ -89,6 +91,7 @@ func _physics_process(delta):
 			timer.wait_time = 1.0
 			timer.timeout.connect(func():
 				obj.remove_collision_exception_with(magnet)
+				obj.remove_collision_exception_with(sticky_bit)
 				timer.queue_free()
 			)
 			obj.add_child(timer)

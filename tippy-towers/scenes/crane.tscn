@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://d2ytku27cc5of"]
+[gd_scene load_steps=16 format=3 uid="uid://d2ytku27cc5of"]
 
 [ext_resource type="Script" path="res://scripts/crane.gd" id="1_dp2g1"]
 [ext_resource type="Texture2D" uid="uid://cyed14anatvbx" path="res://art/crane.png" id="2_tib5a"]
@@ -12,8 +12,14 @@ size = Vector2(128, 96)
 [sub_resource type="CircleShape2D" id="CircleShape2D_0pyye"]
 radius = 4.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ngqpb"]
+size = Vector2(2, 6)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xaaf2"]
-size = Vector2(128, 6)
+size = Vector2(124, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0eb5c"]
+size = Vector2(124, 2)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mjl0t"]
 size = Vector2(128, 48)
@@ -48,14 +54,13 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rt02g"]
 size = Vector2(16, 320)
 
-[node name="Crane" type="CharacterBody2D" node_paths=PackedStringArray("junk_probes")]
+[node name="Crane" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_dp2g1")
 speed = 150
 move_up_speed = 100
-junk_probes = [NodePath("Magnet/JunkProbe1"), NodePath("Magnet/JunkProbe2"), NodePath("Magnet/JunkProbe3"), NodePath("Magnet/JunkProbe4"), NodePath("Magnet/JunkProbe5")]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 show_behind_parent = true
@@ -147,10 +152,36 @@ mass = 20.0
 [node name="Sprite" type="Sprite2D" parent="Magnet"]
 texture = ExtResource("4_ge2jl")
 
+[node name="Left" type="CollisionShape2D" parent="Magnet"]
+position = Vector2(-63, 5)
+shape = SubResource("RectangleShape2D_ngqpb")
+
+[node name="Right" type="CollisionShape2D" parent="Magnet"]
+position = Vector2(63, 5)
+shape = SubResource("RectangleShape2D_ngqpb")
+
 [node name="Top" type="CollisionShape2D" parent="Magnet"]
-position = Vector2(0, 5)
+position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_xaaf2")
-debug_color = Color(0.992157, 0, 0.243137, 0.419608)
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Magnet"]
+position = Vector2(-52, 7)
+node_a = NodePath("..")
+node_b = NodePath("../StickyBit")
+
+[node name="PinJoint2D2" type="PinJoint2D" parent="Magnet"]
+position = Vector2(52, 7)
+node_a = NodePath("..")
+node_b = NodePath("../StickyBit")
+
+[node name="StickyBit" type="RigidBody2D" parent="Magnet"]
+collision_mask = 2
+max_contacts_reported = 8
+contact_monitor = true
+
+[node name="Shape" type="CollisionShape2D" parent="Magnet/StickyBit"]
+position = Vector2(0, 7)
+shape = SubResource("RectangleShape2D_0eb5c")
 
 [node name="GravityZone" type="Area2D" parent="Magnet"]
 collision_mask = 2
@@ -169,31 +200,6 @@ shape = SubResource("RectangleShape2D_mjl0t")
 position = Vector2(0, -1)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_2etnk")
-
-[node name="JunkProbe1" type="RayCast2D" parent="Magnet"]
-position = Vector2(-63, 8)
-target_position = Vector2(0, 2)
-collision_mask = 2
-
-[node name="JunkProbe2" type="RayCast2D" parent="Magnet"]
-position = Vector2(-32, 8)
-target_position = Vector2(0, 2)
-collision_mask = 2
-
-[node name="JunkProbe3" type="RayCast2D" parent="Magnet"]
-position = Vector2(-1, 8)
-target_position = Vector2(0, 2)
-collision_mask = 2
-
-[node name="JunkProbe4" type="RayCast2D" parent="Magnet"]
-position = Vector2(30, 8)
-target_position = Vector2(0, 2)
-collision_mask = 2
-
-[node name="JunkProbe5" type="RayCast2D" parent="Magnet"]
-position = Vector2(61, 8)
-target_position = Vector2(0, 2)
-collision_mask = 2
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2(-24, -96)
