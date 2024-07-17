@@ -24,6 +24,9 @@ var fused_with_junk: Array[RigidBody2D] = []
 var current_speed := 0.0
 var tween_speed := 0.05
 
+var speed_up_horizontal := false
+var speed_up_vertical := false
+
 func _ready():
 	game = get_node("/root/Game")
 	_update_magnet()
@@ -39,10 +42,11 @@ func _process(delta):
 		emit_signal("magnet_changed", magnet_activated)
 		_update_magnet()
 	
+	var hmultiplier := 2 if speed_up_horizontal else 1
 	if Input.is_action_pressed("move_left") and not is_game_over:
-		current_speed = lerpf(current_speed, -speed * delta, tween_speed)
+		current_speed = lerpf(current_speed, -speed * delta * hmultiplier, tween_speed)
 	elif Input.is_action_pressed("move_right") and not is_game_over:
-		current_speed = lerpf(current_speed, speed * delta, tween_speed)
+		current_speed = lerpf(current_speed, speed * delta * hmultiplier, tween_speed)
 	else:
 		current_speed = lerpf(current_speed, 0, tween_speed)
 		if absf(current_speed) < 0.01:
@@ -52,10 +56,11 @@ func _physics_process(delta):
 	global_position.x = clampf(position.x + current_speed, left_bound.global_position.x, right_bound.global_position.x)
 	
 	if not game.is_game_over:
+		var vmultiplier := 2 if speed_up_vertical else 1
 		if Input.is_action_pressed("move_up"):
-			chain_anchor.position.y -= move_up_speed * delta
+			chain_anchor.position.y -= move_up_speed * delta * vmultiplier
 		elif Input.is_action_pressed("move_down"):
-			chain_anchor.position.y += move_up_speed * delta
+			chain_anchor.position.y += move_up_speed * delta * vmultiplier
 		chain_anchor.position.y = clampf(chain_anchor.position.y, anchor_min.position.y, anchor_max.position.y)
 	
 	var contact_count := magnet_direct_state.get_contact_count()
@@ -119,3 +124,9 @@ func _body_shape_exited(body_rid: RID, body: Node, body_shape_index: int, local_
 	var my_body_state := PhysicsServer2D.body_get_direct_state(magnet.get_rid())
 	var contact_count := my_body_state.get_contact_count()
 	#print("Magnet contact count down to: ", contact_count)
+
+func _on_horizontal_speedup_button_toggled(toggled_on: bool):
+	speed_up_horizontal = toggled_on
+
+func _on_vertical_speedup_button_toggled(toggled_on):
+	speed_up_vertical = toggled_on

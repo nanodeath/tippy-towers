@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://chss5a6j3kny4"]
+[gd_scene load_steps=57 format=3 uid="uid://chss5a6j3kny4"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_7hxrq"]
 [ext_resource type="Texture2D" uid="uid://p5f1hvknc1bl" path="res://icon.svg" id="1_qfxxw"]
@@ -16,8 +16,10 @@
 [ext_resource type="Script" path="res://scripts/spawn_timer.gd" id="6_fuj8g"]
 [ext_resource type="Script" path="res://scripts/ui/end_game_screen.gd" id="7_g2yxk"]
 [ext_resource type="Texture2D" uid="uid://dp1vjotwjadc" path="res://art/chalk_x_1.png" id="7_kq8b6"]
+[ext_resource type="Texture2D" uid="uid://djxiaeb3r5bdk" path="res://art/ui_speedup_horizontal.png" id="7_mbeg1"]
 [ext_resource type="Texture2D" uid="uid://dffwuwa1tykyk" path="res://art/chalk_x_2.png" id="8_2q1k6"]
 [ext_resource type="PackedScene" uid="uid://b016ebofn2m51" path="res://scenes/junk/box_128_64.tscn" id="8_jedqf"]
+[ext_resource type="Texture2D" uid="uid://celwtttfr3qvc" path="res://art/ui_speedup_vertical.png" id="8_n1sqa"]
 [ext_resource type="PackedScene" uid="uid://c4can45bm31l1" path="res://scenes/junk/box_64_64.tscn" id="9_hseeu"]
 [ext_resource type="Script" path="res://scripts/ui/day_flythrough.gd" id="11_bd1tt"]
 [ext_resource type="Texture2D" uid="uid://ddne6po0kqwal" path="res://art/girder.png" id="12_0yopg"]
@@ -35,6 +37,28 @@
 [ext_resource type="Texture2D" uid="uid://6uwmlnf1m6do" path="res://art/bright_light.png" id="30_sx8h4"]
 [ext_resource type="Script" path="res://scripts/day_manager.gd" id="33_a6mjg"]
 [ext_resource type="PackedScene" uid="uid://ordtntrrhmst" path="res://scenes/sign.tscn" id="35_d8xem"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_f1x13"]
+load_path = "res://.godot/imported/ui_speedup_horizontal.png-ddf5cb0e5a75bad7616da00f5c9eecd0.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nc6fv"]
+atlas = SubResource("CompressedTexture2D_f1x13")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mugnu"]
+atlas = ExtResource("7_mbeg1")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3nu7"]
+atlas = ExtResource("8_n1sqa")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ok1c4"]
+load_path = "res://.godot/imported/ui_speedup_vertical.png-15df3b718fd5ab34910dd18539011e3d.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gk6v5"]
+atlas = SubResource("CompressedTexture2D_ok1c4")
+region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uhjy8"]
 size = Vector2(506, 32)
@@ -235,6 +259,24 @@ text = "0"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
+
+[node name="HorizontalSpeedupButton" type="TextureButton" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+focus_mode = 0
+toggle_mode = true
+texture_normal = SubResource("AtlasTexture_nc6fv")
+texture_pressed = SubResource("AtlasTexture_mugnu")
+
+[node name="VerticalSpeedupButton" type="TextureButton" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+focus_mode = 0
+toggle_mode = true
+texture_normal = SubResource("AtlasTexture_r3nu7")
+texture_pressed = SubResource("AtlasTexture_gk6v5")
 
 [node name="EndGameScreen" type="Control" parent="CanvasLayer"]
 visible = false
@@ -550,8 +592,11 @@ script = ExtResource("22_jykiw")
 [node name="DayManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("33_a6mjg")
-packages_per_day = 2
+packages_per_day = 5
 
 [node name="Sign" parent="." instance=ExtResource("35_d8xem")]
 position = Vector2(1026, 620)
 rotation = 0.171317
+
+[connection signal="toggled" from="CanvasLayer/MarginContainer/HorizontalSpeedupButton" to="Crane" method="_on_horizontal_speedup_button_toggled"]
+[connection signal="toggled" from="CanvasLayer/MarginContainer/VerticalSpeedupButton" to="Crane" method="_on_vertical_speedup_button_toggled"]
