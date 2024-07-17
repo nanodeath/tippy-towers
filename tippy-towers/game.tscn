@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://b3cuxi3hana1g" path="res://scenes/junk/box_128_128.tscn" id="4_7rvxo"]
 [ext_resource type="Script" path="res://scripts/ui/packages_lost.gd" id="5_ki7lu"]
 [ext_resource type="Script" path="res://scripts/spawner.gd" id="5_ur8yp"]
-[ext_resource type="Theme" uid="uid://dnnomnic02f36" path="res://end_game.tres" id="6_a0rw7"]
+[ext_resource type="Theme" path="res://end_game.tres" id="6_a0rw7"]
 [ext_resource type="Script" path="res://scripts/spawn_timer.gd" id="6_fuj8g"]
 [ext_resource type="Script" path="res://scripts/ui/end_game_screen.gd" id="7_g2yxk"]
 [ext_resource type="Texture2D" uid="uid://dp1vjotwjadc" path="res://art/chalk_x_1.png" id="7_kq8b6"]
@@ -22,8 +22,8 @@
 [ext_resource type="Texture2D" uid="uid://ddne6po0kqwal" path="res://art/girder.png" id="12_0yopg"]
 [ext_resource type="Script" path="res://scripts/package_lost_zone.gd" id="14_runno"]
 [ext_resource type="Script" path="res://scripts/spawner_group.gd" id="19_rpvsw"]
-[ext_resource type="PackedScene" uid="uid://cn2rra55iei73" path="res://scenes/junk/box_192_64.tscn" id="20_eaue4"]
-[ext_resource type="PackedScene" uid="uid://drapsryciml5g" path="res://scenes/junk/box_triangle_64_64.tscn" id="20_icsjf"]
+[ext_resource type="PackedScene" path="res://scenes/junk/box_192_64.tscn" id="20_eaue4"]
+[ext_resource type="PackedScene" uid="uid://usyl7xsoi0ur" path="res://scenes/junk/box_triangle_64_64.tscn" id="20_icsjf"]
 [ext_resource type="Script" path="res://scripts/packages_scored.gd" id="21_e7mvv"]
 [ext_resource type="Script" path="res://scripts/junk_freezer.gd" id="22_jykiw"]
 [ext_resource type="Script" path="res://scripts/chute.gd" id="22_rjeew"]
@@ -44,15 +44,6 @@ size = Vector2(382, 30)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8u318"]
 friction = 0.1
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xbqhh"]
-size = Vector2(350, 100)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_x3he1"]
-size = Vector2(384, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0467r"]
-size = Vector2(10000, 500)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ulv85"]
 atlas = ExtResource("29_diou1")
@@ -81,6 +72,21 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_4cwph"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Brightness:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
 [sub_resource type="Animation" id="Animation_0j4yf"]
 resource_name = "spin"
 loop_mode = 1
@@ -97,26 +103,20 @@ tracks/0/keys = {
 "values": [0.0, 3.14159, 6.28319]
 }
 
-[sub_resource type="Animation" id="Animation_4cwph"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Brightness:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gfcw5"]
 _data = {
 "RESET": SubResource("Animation_4cwph"),
 "spin": SubResource("Animation_0j4yf")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xbqhh"]
+size = Vector2(350, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x3he1"]
+size = Vector2(384, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0467r"]
+size = Vector2(10000, 500)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_7hxrq")
@@ -418,6 +418,22 @@ shape = SubResource("RectangleShape2D_c81ok")
 physics_material_override = SubResource("PhysicsMaterial_8u318")
 script = ExtResource("22_rjeew")
 
+[node name="ChuteStatusLight" type="AnimatedSprite2D" parent="Camera2D/Chute"]
+unique_name_in_owner = true
+position = Vector2(-558, -236)
+sprite_frames = SubResource("SpriteFrames_yhwqa")
+animation = &"on"
+script = ExtResource("30_fyiyi")
+
+[node name="Brightness" type="Sprite2D" parent="Camera2D/Chute/ChuteStatusLight"]
+texture = ExtResource("30_sx8h4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera2D/Chute/ChuteStatusLight"]
+libraries = {
+"": SubResource("AnimationLibrary_gfcw5")
+}
+autoplay = "spin"
+
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Camera2D/Chute"]
 position = Vector2(-737, -144)
 rotation = -2.77619
@@ -507,19 +523,3 @@ script = ExtResource("21_e7mvv")
 [node name="JunkFreezer" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("22_jykiw")
-
-[node name="ChuteStatusLight" type="AnimatedSprite2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(18, 88)
-sprite_frames = SubResource("SpriteFrames_yhwqa")
-animation = &"on"
-script = ExtResource("30_fyiyi")
-
-[node name="Brightness" type="Sprite2D" parent="ChuteStatusLight"]
-texture = ExtResource("30_sx8h4")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="ChuteStatusLight"]
-libraries = {
-"": SubResource("AnimationLibrary_gfcw5")
-}
-autoplay = "spin"
