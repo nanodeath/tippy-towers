@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://chss5a6j3kny4"]
+[gd_scene load_steps=47 format=3 uid="uid://chss5a6j3kny4"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_7hxrq"]
 [ext_resource type="Texture2D" uid="uid://p5f1hvknc1bl" path="res://icon.svg" id="1_qfxxw"]
@@ -32,6 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://dhnd3n0ef70ct" path="res://art/status_light.png" id="29_diou1"]
 [ext_resource type="Script" path="res://scripts/status_light.gd" id="30_fyiyi"]
 [ext_resource type="Texture2D" uid="uid://6uwmlnf1m6do" path="res://art/bright_light.png" id="30_sx8h4"]
+[ext_resource type="Script" path="res://scripts/day_manager.gd" id="33_a6mjg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uhjy8"]
 size = Vector2(506, 32)
@@ -371,6 +372,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 480, 32)
 
 [node name="Spawner" type="Node2D" parent="Camera2D/Platform"]
+unique_name_in_owner = true
 position = Vector2(-524, -534)
 script = ExtResource("5_ur8yp")
 to_spawn = Array[PackedScene]([ExtResource("4_7rvxo"), ExtResource("8_jedqf"), ExtResource("9_hseeu"), ExtResource("4_7rvxo")])
@@ -381,8 +383,7 @@ to_spawn = Array[PackedScene]([ExtResource("4_7rvxo"), ExtResource("8_jedqf"), E
 
 [node name="Level2" type="Node" parent="Camera2D/Platform/Spawner"]
 script = ExtResource("19_rpvsw")
-to_spawn = Array[PackedScene]([ExtResource("4_7rvxo"), ExtResource("8_jedqf"), ExtResource("20_eaue4"), ExtResource("20_icsjf")])
-package_threshold = 5
+to_spawn = Array[PackedScene]([ExtResource("20_eaue4"), ExtResource("20_icsjf"), ExtResource("4_7rvxo"), ExtResource("8_jedqf")])
 
 [node name="HighestPointDetector" type="ShapeCast2D" parent="Camera2D"]
 unique_name_in_owner = true
@@ -523,3 +524,8 @@ script = ExtResource("21_e7mvv")
 [node name="JunkFreezer" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("22_jykiw")
+
+[node name="DayManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("33_a6mjg")
+packages_per_day = 2

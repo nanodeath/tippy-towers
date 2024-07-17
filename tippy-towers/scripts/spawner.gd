@@ -2,9 +2,12 @@ class_name Spawner extends Node2D
 
 @export var to_spawn: Array[PackedScene]
 @onready var spawn_timer = %SpawnTimer
+@onready var day_manager := %DayManager
 
 var current_spawner_group: SpawnerGroup
 var packages_spawned := 0
+
+signal package_spawned(count: int)
 
 func _ready():
 	spawn.call_deferred()
@@ -18,10 +21,8 @@ func spawn():
 	instance.rotation = randf_range(0, PI * 2)
 	add_sibling(instance)
 	packages_spawned += 1
+	emit_signal("package_spawned", packages_spawned)
 
 func _update_current_group():
-	for c in get_children():
-		var spawner_group := c as SpawnerGroup
-		if packages_spawned >= spawner_group.package_threshold:
-			current_spawner_group = spawner_group
-			break
+	var idx = min(day_manager.current_day, get_child_count() - 1)
+	current_spawner_group = get_child(idx)
