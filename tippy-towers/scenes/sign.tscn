@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://ordtntrrhmst"]
+
+[ext_resource type="Texture2D" uid="uid://124hrj8box3j" path="res://art/sign_post.png" id="1_fp0i1"]
+[ext_resource type="Texture2D" uid="uid://4cr4e2g82lqh" path="res://art/sign_9.png" id="2_2t25x"]
+[ext_resource type="Texture2D" uid="uid://crmaqvpwvbxet" path="res://art/sign_arrow.png" id="3_5qh4d"]
+
+[node name="Sign" type="Node2D"]
+
+[node name="SignPost" type="Sprite2D" parent="."]
+position = Vector2(0, -64)
+scale = Vector2(2, 2)
+texture = ExtResource("1_fp0i1")
+
+[node name="SignBoard" type="NinePatchRect" parent="."]
+offset_left = -55.0
+offset_top = -122.0
+offset_right = 55.0
+offset_bottom = -42.0
+texture = ExtResource("2_2t25x")
+patch_margin_left = 2
+patch_margin_top = 3
+patch_margin_right = 2
+patch_margin_bottom = 3
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="SignBoard"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 4.0
+offset_right = 105.0
+offset_bottom = 76.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[center]Packages Here[/center]"
+fit_content = true
+scroll_active = false
+
+[node name="SignArrow" type="Sprite2D" parent="."]
+position = Vector2(-42, -46)
+rotation = -0.702137
+texture = ExtResource("3_5qh4d")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://chss5a6j3kny4"]
+[gd_scene load_steps=49 format=3 uid="uid://chss5a6j3kny4"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_7hxrq"]
 [ext_resource type="Texture2D" uid="uid://p5f1hvknc1bl" path="res://icon.svg" id="1_qfxxw"]
@@ -34,6 +34,7 @@
 [ext_resource type="Script" path="res://scripts/status_light.gd" id="30_fyiyi"]
 [ext_resource type="Texture2D" uid="uid://6uwmlnf1m6do" path="res://art/bright_light.png" id="30_sx8h4"]
 [ext_resource type="Script" path="res://scripts/day_manager.gd" id="33_a6mjg"]
+[ext_resource type="PackedScene" uid="uid://ordtntrrhmst" path="res://scenes/sign.tscn" id="35_d8xem"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uhjy8"]
 size = Vector2(506, 32)
@@ -137,6 +138,7 @@ theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
 [node name="MagnetStatus" type="HBoxContainer" parent="CanvasLayer/MarginContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
@@ -549,3 +551,7 @@ script = ExtResource("22_jykiw")
 unique_name_in_owner = true
 script = ExtResource("33_a6mjg")
 packages_per_day = 2
+
+[node name="Sign" parent="." instance=ExtResource("35_d8xem")]
+position = Vector2(1026, 620)
+rotation = 0.171317
