@@ -13,8 +13,8 @@ func _ready():
 	emit_signal("new_day", current_day)
 
 func _package_spawned(count: int):
+	var game = get_node("/root/Game") as Game
 	var calculated_day: int = count / packages_per_day
-	print("_package_spawned: ", count, " calculated day: ", calculated_day)
-	if current_day != calculated_day:
+	if current_day != calculated_day and not game.is_game_over:
 		current_day = calculated_day
 		emit_signal("new_day", current_day)

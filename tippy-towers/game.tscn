@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://chss5a6j3kny4"]
+[gd_scene load_steps=48 format=3 uid="uid://chss5a6j3kny4"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_7hxrq"]
 [ext_resource type="Texture2D" uid="uid://p5f1hvknc1bl" path="res://icon.svg" id="1_qfxxw"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://dffwuwa1tykyk" path="res://art/chalk_x_2.png" id="8_2q1k6"]
 [ext_resource type="PackedScene" uid="uid://b016ebofn2m51" path="res://scenes/junk/box_128_64.tscn" id="8_jedqf"]
 [ext_resource type="PackedScene" uid="uid://c4can45bm31l1" path="res://scenes/junk/box_64_64.tscn" id="9_hseeu"]
+[ext_resource type="Script" path="res://scripts/ui/day_flythrough.gd" id="11_bd1tt"]
 [ext_resource type="Texture2D" uid="uid://ddne6po0kqwal" path="res://art/girder.png" id="12_0yopg"]
 [ext_resource type="Script" path="res://scripts/package_lost_zone.gd" id="14_runno"]
 [ext_resource type="Script" path="res://scripts/spawner_group.gd" id="19_rpvsw"]
@@ -344,6 +345,25 @@ offset_top = 371.0
 offset_right = 608.0
 offset_bottom = 435.0
 texture = ExtResource("8_2q1k6")
+
+[node name="DayFlythrough" type="RichTextLabel" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -33.5
+offset_right = 64.0
+offset_bottom = 33.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 64
+text = "Day 1"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("11_bd1tt")
 
 [node name="CameraTarget" type="Marker2D" parent="."]
 unique_name_in_owner = true
