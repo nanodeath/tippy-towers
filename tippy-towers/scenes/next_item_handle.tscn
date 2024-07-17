@@ -1,0 +1,86 @@
+[gd_scene load_steps=6 format=3 uid="uid://cq08hf70c1tdr"]
+
+[ext_resource type="PackedScene" uid="uid://tlivsympbxyw" path="res://scenes/chain_link.tscn" id="1_jv5an"]
+[ext_resource type="Script" path="res://scripts/next_item_handle.gd" id="1_ltasc"]
+[ext_resource type="Texture2D" uid="uid://k0p0wbgugaxh" path="res://art/handle.png" id="2_epjd8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yyb6e"]
+radius = 4.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6lyq0"]
+radius = 32.0
+
+[node name="Root" type="Node2D"]
+script = ExtResource("1_ltasc")
+
+[node name="ChainAnchor" type="CharacterBody2D" parent="."]
+position = Vector2(-1, 30)
+motion_mode = 1
+
+[node name="PinJoint2D" type="PinJoint2D" parent="ChainAnchor"]
+position = Vector2(0, -30)
+softness = 0.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChainAnchor"]
+shape = SubResource("CircleShape2D_yyb6e")
+
+[node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="ChainAnchor"]
+node_a = NodePath("..")
+node_b = NodePath("../../ChainLink")
+length = 20.0
+stiffness = 32.0
+
+[node name="ChainLink" parent="." instance=ExtResource("1_jv5an")]
+position = Vector2(0, 62)
+mass = 0.1
+linear_damp = 2.0
+angular_damp = 8.0
+
+[node name="ConnectionToNext" parent="ChainLink" index="2"]
+node_b = NodePath("../../ChainLink2")
+
+[node name="ChainLink2" parent="." instance=ExtResource("1_jv5an")]
+position = Vector2(0, 122)
+mass = 0.1
+linear_damp = 2.0
+angular_damp = 8.0
+
+[node name="ConnectionToNext" parent="ChainLink2" index="2"]
+node_b = NodePath("../../ChainLink3")
+
+[node name="ChainLink3" parent="." instance=ExtResource("1_jv5an")]
+position = Vector2(0, 182)
+mass = 0.1
+linear_damp = 2.0
+angular_damp = 8.0
+
+[node name="ConnectionToNext" parent="ChainLink3" index="2"]
+node_b = NodePath("../../ChainLink4")
+
+[node name="ChainLink4" parent="." instance=ExtResource("1_jv5an")]
+position = Vector2(0, 242)
+mass = 0.1
+linear_damp = 2.0
+angular_damp = 8.0
+
+[node name="ConnectionToNext" parent="ChainLink4" index="2"]
+node_b = NodePath("../../NextItemHandle")
+
+[node name="NextItemHandle" type="RigidBody2D" parent="."]
+position = Vector2(0, 274)
+input_pickable = true
+mass = 0.1
+
+[node name="Sprite" type="Sprite2D" parent="NextItemHandle"]
+texture = ExtResource("2_epjd8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NextItemHandle"]
+position = Vector2(0, 22)
+shape = SubResource("CircleShape2D_6lyq0")
+
+[connection signal="input_event" from="NextItemHandle" to="." method="_input_event"]
+
+[editable path="ChainLink"]
+[editable path="ChainLink2"]
+[editable path="ChainLink3"]
+[editable path="ChainLink4"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://chss5a6j3kny4"]
+[gd_scene load_steps=62 format=3 uid="uid://chss5a6j3kny4"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_7hxrq"]
 [ext_resource type="Texture2D" uid="uid://p5f1hvknc1bl" path="res://icon.svg" id="1_qfxxw"]
@@ -38,6 +38,7 @@
 [ext_resource type="Texture2D" uid="uid://6uwmlnf1m6do" path="res://art/bright_light.png" id="30_sx8h4"]
 [ext_resource type="Script" path="res://scripts/day_manager.gd" id="33_a6mjg"]
 [ext_resource type="PackedScene" uid="uid://ordtntrrhmst" path="res://scenes/sign.tscn" id="35_d8xem"]
+[ext_resource type="PackedScene" uid="uid://cq08hf70c1tdr" path="res://scenes/next_item_handle.tscn" id="39_rx6ax"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_f1x13"]
 load_path = "res://.godot/imported/ui_speedup_horizontal.png-ddf5cb0e5a75bad7616da00f5c9eecd0.ctex"
@@ -555,6 +556,10 @@ position = Vector2(-18.281, 12.0904)
 rotation = 0.369644
 shape = SubResource("RectangleShape2D_xbqhh")
 debug_color = Color(8.66354e-07, 0.636253, 0.407196, 0.42)
+
+[node name="NextItemHandle" parent="Camera2D" instance=ExtResource("39_rx6ax")]
+unique_name_in_owner = true
+position = Vector2(-272, -557)
 
 [node name="Ground" type="StaticBody2D" parent="."]
 z_index = 1
