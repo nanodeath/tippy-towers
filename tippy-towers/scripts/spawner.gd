@@ -10,7 +10,6 @@ var packages_spawned := 0
 signal package_spawned(count: int)
 
 func _ready():
-	spawn.call_deferred()
 	spawn_timer.tick.connect(self.spawn)
 	_update_current_group()
 

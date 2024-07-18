@@ -218,9 +218,11 @@ scroll_active = false
 autowrap_mode = 0
 
 [node name="VersionLabel" type="RichTextLabel" parent="CanvasLayer/MarginContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
+theme_override_colors/default_color = Color(1, 1, 1, 0.494118)
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
@@ -256,6 +258,7 @@ autowrap_mode = 0
 
 [node name="PackagesLost" type="HBoxContainer" parent="CanvasLayer/MarginContainer/BottomCenter"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 script = ExtResource("5_ki7lu")
 
@@ -542,7 +545,6 @@ script = ExtResource("22_rjeew")
 unique_name_in_owner = true
 position = Vector2(-544, -262)
 sprite_frames = SubResource("SpriteFrames_yhwqa")
-animation = &"on"
 script = ExtResource("30_fyiyi")
 
 [node name="Brightness" type="Sprite2D" parent="Camera2D/Chute/ChuteStatusLight"]
@@ -628,7 +630,8 @@ right_bound = NodePath("../CraneRightBound")
 [node name="SpawnTimer" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("6_fuj8g")
-initial_time = 15.0
+initial_time = 2.0
+time_interval = 15.0
 
 [node name="PackageLostZone" type="Area2D" parent="."]
 unique_name_in_owner = true

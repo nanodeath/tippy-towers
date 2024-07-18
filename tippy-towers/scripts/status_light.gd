@@ -3,7 +3,7 @@ class_name StatusLight extends AnimatedSprite2D
 @onready var brightness = $Brightness
 
 func _ready():
-	turn_on()
+	brightness.modulate = Color.TRANSPARENT
 
 func turn_on():
 	play("on")
