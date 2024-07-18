@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://chss5a6j3kny4"]
+[gd_scene load_steps=64 format=3 uid="uid://chss5a6j3kny4"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_7hxrq"]
 [ext_resource type="Texture2D" uid="uid://p5f1hvknc1bl" path="res://icon.svg" id="1_qfxxw"]
@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://b3cuxi3hana1g" path="res://scenes/junk/box_128_128.tscn" id="4_7rvxo"]
 [ext_resource type="Script" path="res://scripts/ui/packages_lost.gd" id="5_ki7lu"]
 [ext_resource type="Script" path="res://scripts/spawner.gd" id="5_ur8yp"]
-[ext_resource type="Theme" path="res://end_game.tres" id="6_a0rw7"]
+[ext_resource type="Theme" uid="uid://dnnomnic02f36" path="res://end_game.tres" id="6_a0rw7"]
 [ext_resource type="Script" path="res://scripts/spawn_timer.gd" id="6_fuj8g"]
 [ext_resource type="Script" path="res://scripts/ui/end_game_screen.gd" id="7_g2yxk"]
 [ext_resource type="Texture2D" uid="uid://dp1vjotwjadc" path="res://art/chalk_x_1.png" id="7_kq8b6"]
@@ -37,8 +37,10 @@
 [ext_resource type="Script" path="res://scripts/status_light.gd" id="30_fyiyi"]
 [ext_resource type="Texture2D" uid="uid://6uwmlnf1m6do" path="res://art/bright_light.png" id="30_sx8h4"]
 [ext_resource type="Script" path="res://scripts/day_manager.gd" id="33_a6mjg"]
-[ext_resource type="PackedScene" path="res://scenes/sign.tscn" id="35_d8xem"]
+[ext_resource type="PackedScene" uid="uid://ordtntrrhmst" path="res://scenes/sign.tscn" id="35_d8xem"]
 [ext_resource type="PackedScene" uid="uid://dx70bhqmoijyn" path="res://scenes/next_item_handle.tscn" id="39_rx6ax"]
+[ext_resource type="Script" path="res://scripts/main_menu_parallax.gd" id="40_woef3"]
+[ext_resource type="Texture2D" uid="uid://cis2ij4gihs7i" path="res://art/bg.png" id="41_jwfsb"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_f1x13"]
 load_path = "res://.godot/imported/ui_speedup_horizontal.png-ddf5cb0e5a75bad7616da00f5c9eecd0.ctex"
@@ -654,6 +656,33 @@ packages_per_day = 5
 [node name="Sign" parent="." instance=ExtResource("35_d8xem")]
 position = Vector2(1026, 620)
 rotation = 0.171317
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource("40_woef3")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color(1, 1, 1, 0.156863)
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(1024, 1024)
+
+[node name="Bg" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("41_jwfsb")
+centered = false
+
+[node name="Bg2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(0, 512)
+texture = ExtResource("41_jwfsb")
+centered = false
+
+[node name="Bg3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(512, 0)
+texture = ExtResource("41_jwfsb")
+centered = false
+
+[node name="Bg4" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(512, 512)
+texture = ExtResource("41_jwfsb")
+centered = false
 
 [connection signal="toggled" from="CanvasLayer/MarginContainer/HorizontalSpeedupButton" to="Crane" method="_on_horizontal_speedup_button_toggled"]
 [connection signal="toggled" from="CanvasLayer/MarginContainer/VerticalSpeedupButton" to="Crane" method="_on_vertical_speedup_button_toggled"]
