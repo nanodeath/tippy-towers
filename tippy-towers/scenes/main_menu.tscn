@@ -1,0 +1,193 @@
+[gd_scene load_steps=10 format=3 uid="uid://c0q1hpo66rhyb"]
+
+[ext_resource type="Theme" uid="uid://cgudjne6cl7nl" path="res://main_menu.tres" id="1_3vhnt"]
+[ext_resource type="Script" path="res://scripts/title_block.gd" id="2_cvs8e"]
+[ext_resource type="Texture2D" uid="uid://luc52nust80n" path="res://art/junk/title_box.png" id="3_8365y"]
+[ext_resource type="Texture2D" uid="uid://dw44np86218dw" path="res://art/ground_9.png" id="4_84xe0"]
+[ext_resource type="Texture2D" uid="uid://c0hgpxt6bq0e6" path="res://art/stripes.png" id="5_wh7ar"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j76jv"]
+size = Vector2(256, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_avyyk"]
+size = Vector2(128, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_20kjo"]
+size = Vector2(166.4, 76.8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pew8i"]
+size = Vector2(1000, 32)
+
+[node name="MainMenu" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_3vhnt")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TitleBlock1" type="RigidBody2D" parent="."]
+position = Vector2(539, -355)
+rotation = -0.020944
+script = ExtResource("2_cvs8e")
+min_angle_deg = -45.0
+max_angle_deg = 45.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="TitleBlock1"]
+offset_left = -128.0
+offset_top = -48.0
+scale = Vector2(2, 2)
+texture = ExtResource("3_8365y")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TitleBlock1"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -41.5
+offset_top = -20.0
+offset_right = 41.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_3vhnt")
+text = "Handle"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TitleBlock1"]
+shape = SubResource("RectangleShape2D_j76jv")
+
+[node name="TitleBlock2" type="RigidBody2D" parent="."]
+position = Vector2(627, -187)
+script = ExtResource("2_cvs8e")
+min_angle_deg = -20.0
+max_angle_deg = 20.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="TitleBlock2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("3_8365y")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TitleBlock2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = -20.0
+offset_right = 27.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_3vhnt")
+theme_override_font_sizes/normal_font_size = 48
+text = "With"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TitleBlock2"]
+shape = SubResource("RectangleShape2D_avyyk")
+
+[node name="TitleBlock3" type="RigidBody2D" parent="."]
+position = Vector2(708, -66)
+script = ExtResource("2_cvs8e")
+min_angle_deg = -45.0
+max_angle_deg = 45.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="TitleBlock3"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -83.2
+offset_top = -38.4
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("3_8365y")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TitleBlock3"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.5
+offset_top = -20.0
+offset_right = 26.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_3vhnt")
+text = "Care"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TitleBlock3"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_20kjo")
+
+[node name="Ground" type="StaticBody2D" parent="."]
+z_index = 1
+position = Vector2(575, 320)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Ground"]
+modulate = Color(0.81, 0.81, 0.81, 1)
+custom_minimum_size = Vector2(57.475, 0)
+offset_left = -500.0
+offset_top = -16.0
+offset_right = 500.0
+offset_bottom = 16.0
+texture = ExtResource("4_84xe0")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="Stripes" type="Sprite2D" parent="Ground"]
+texture_repeat = 2
+position = Vector2(-490, -13)
+texture = ExtResource("5_wh7ar")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 980, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+shape = SubResource("RectangleShape2D_pew8i")
+
+[node name="GroundMarker" type="Marker2D" parent="Ground"]
+unique_name_in_owner = true
+position = Vector2(0, -16)
