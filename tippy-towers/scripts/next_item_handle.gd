@@ -3,14 +3,20 @@ class_name NextItemHandle extends Node2D
 @export var trigger_distance: int = 420
 @onready var next_item_handle: RigidBody2D = $NextItemHandle
 @onready var chain_anchor: PhysicsBody2D = $ChainAnchor
+@onready var chute = %Chute
 
 var is_mouse_down := false
 var last_position := Vector2.ZERO
 var recently_triggered := false
+var chute_occupied := false
+
 signal triggered
 
+func _ready():
+	chute.chute_occupied.connect(func(is_occupied: bool): chute_occupied = is_occupied)
+
 func _process(delta):
-	if is_mouse_down and not recently_triggered and chain_anchor.global_position.distance_to(next_item_handle.global_position) >= trigger_distance:
+	if is_mouse_down and not recently_triggered and not chute_occupied and chain_anchor.global_position.distance_to(next_item_handle.global_position) >= trigger_distance:
 		recently_triggered = true
 		print("Triggered!")
 		emit_signal("triggered")
