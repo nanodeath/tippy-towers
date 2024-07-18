@@ -30,10 +30,13 @@ axis_stretch_horizontal = 2
 region_rect = Rect2(0, 0, 32, 32)
 
 [resource]
+Box/base_type = &"RichTextLabel"
+Box/colors/default_color = Color(0.217704, 0.110762, 5.65536e-07, 1)
+Box/font_sizes/normal_font_size = 72
 Button/colors/font_color = Color(0.08, 0.08, 0.08, 1)
 Button/font_sizes/font_size = 48
 Button/styles/hover = SubResource("StyleBoxTexture_b3hcu")
 Button/styles/normal = SubResource("StyleBoxTexture_3l2ue")
 Button/styles/pressed = SubResource("StyleBoxTexture_lwj4t")
-RichTextLabel/colors/default_color = Color(0.2, 0.1, 0, 1)
-RichTextLabel/font_sizes/normal_font_size = 72
+Title/base_type = &"RichTextLabel"
+Title/font_sizes/normal_font_size = 72

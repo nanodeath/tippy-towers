@@ -1,0 +1,97 @@
+[gd_scene load_steps=4 format=3 uid="uid://di3hmxxebnw6m"]
+
+[ext_resource type="Theme" uid="uid://cgudjne6cl7nl" path="res://main_menu.tres" id="1_3pg10"]
+[ext_resource type="Script" path="res://scripts/ui/options.gd" id="1_6ss8e"]
+[ext_resource type="Script" path="res://scripts/ui/audio_slider.gd" id="2_8xaf0"]
+
+[node name="OptionsWorld" type="Node2D"]
+script = ExtResource("1_6ss8e")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+top_level = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_3pg10")
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_type_variation = &"Title"
+text = "Options"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/h_separation = 14
+theme_override_constants/v_separation = 18
+columns = 2
+
+[node name="OverallVolume" type="RichTextLabel" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Overall Volume"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="OverallVolumeSlider" type="HSlider" parent="MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.05
+value = 1.0
+script = ExtResource("2_8xaf0")
+audio_bus = &"Master"
+
+[node name="MusicVolume" type="RichTextLabel" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Music Volume"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="MusicVolumeSlider" type="HSlider" parent="MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.05
+value = 1.0
+script = ExtResource("2_8xaf0")
+audio_bus = &"Music"
+
+[node name="SFXVolume" type="RichTextLabel" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+text = "SFX Volume"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="SFXVolumeSlider" type="HSlider" parent="MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.05
+value = 1.0
+script = ExtResource("2_8xaf0")
+audio_bus = &"SFX"
+
+[node name="GoBack" type="Button" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Back"

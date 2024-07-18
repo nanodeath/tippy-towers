@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://cgoa2snbqks18"]
+
+[ext_resource type="AudioStream" uid="uid://bfntqv5hw7nwf" path="res://vendor/pixabay_OceanKing/edge-of-the-world-219742.mp3" id="1_x820n"]
+[ext_resource type="AudioStream" uid="uid://c2ykwy073x70q" path="res://vendor/pixabay_OceanKing/september-219737.mp3" id="2_ma157"]
+[ext_resource type="AudioStream" uid="uid://xg2n3hw5b7k" path="res://vendor/pixabay_OceanKing/the-path-untrodden-219745.mp3" id="3_aa0yy"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_uvmvl"]
+streams_count = 3
+stream_0/stream = ExtResource("1_x820n")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_ma157")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("3_aa0yy")
+stream_2/weight = 1.0
+
+[node name="Music" type="Node"]
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_uvmvl")
+autoplay = true
+bus = &"Music"

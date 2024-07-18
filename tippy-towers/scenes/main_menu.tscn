@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c0q1hpo66rhyb"]
+[gd_scene load_steps=15 format=3 uid="uid://c0q1hpo66rhyb"]
 
 [ext_resource type="Theme" uid="uid://cgudjne6cl7nl" path="res://main_menu.tres" id="1_3vhnt"]
 [ext_resource type="Script" path="res://scripts/title_block.gd" id="2_cvs8e"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scripts/main_menu_parallax.gd" id="7_am0kl"]
 [ext_resource type="Texture2D" uid="uid://cis2ij4gihs7i" path="res://art/bg.png" id="7_qf535"]
 [ext_resource type="Texture2D" uid="uid://h2mqidhc37at" path="res://art/bg2.png" id="8_emrof"]
+[ext_resource type="PackedScene" uid="uid://di3hmxxebnw6m" path="res://scenes/options_screen.tscn" id="10_k2h8y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j76jv"]
 size = Vector2(256, 96)
@@ -24,7 +25,9 @@ size = Vector2(1000, 32)
 
 [node name="MainMenu" type="Node2D"]
 
-[node name="UI" type="MarginContainer" parent="."]
+[node name="MainMenuWorld" type="Node2D" parent="."]
+
+[node name="UI" type="MarginContainer" parent="MainMenuWorld"]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -38,17 +41,22 @@ grow_vertical = 0
 theme = ExtResource("1_3vhnt")
 script = ExtResource("2_jhrpc")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI"]
+[node name="Buttons" type="VBoxContainer" parent="MainMenuWorld/UI"]
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_constants/separation = 14
 
-[node name="PlayButton" type="Button" parent="UI/VBoxContainer"]
+[node name="PlayButton" type="Button" parent="MainMenuWorld/UI/Buttons"]
 layout_mode = 2
 text = "Play"
 
-[node name="ByLine" type="RichTextLabel" parent="UI"]
+[node name="OptionsButton" type="Button" parent="MainMenuWorld/UI/Buttons"]
+layout_mode = 2
+text = "Options"
+
+[node name="ByLine" type="RichTextLabel" parent="MainMenuWorld/UI"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -59,14 +67,15 @@ fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
-[node name="TitleBlock1" type="RigidBody2D" parent="."]
+[node name="TitleBlock1" type="RigidBody2D" parent="MainMenuWorld"]
 position = Vector2(546, -355)
 rotation = -0.020944
+scale = Vector2(1, 1)
 script = ExtResource("2_cvs8e")
 min_angle_deg = -45.0
 max_angle_deg = 45.0
 
-[node name="NinePatchRect" type="NinePatchRect" parent="TitleBlock1"]
+[node name="NinePatchRect" type="NinePatchRect" parent="MainMenuWorld/TitleBlock1"]
 offset_left = -128.0
 offset_top = -48.0
 scale = Vector2(2, 2)
@@ -76,7 +85,7 @@ patch_margin_top = 3
 patch_margin_right = 3
 patch_margin_bottom = 3
 
-[node name="RichTextLabel" type="RichTextLabel" parent="TitleBlock1"]
+[node name="RichTextLabel" type="RichTextLabel" parent="MainMenuWorld/TitleBlock1"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -89,21 +98,22 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_3vhnt")
+theme_type_variation = &"Box"
 text = "Handle"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TitleBlock1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainMenuWorld/TitleBlock1"]
 shape = SubResource("RectangleShape2D_j76jv")
 
-[node name="TitleBlock2" type="RigidBody2D" parent="."]
+[node name="TitleBlock2" type="RigidBody2D" parent="MainMenuWorld"]
 position = Vector2(634, -187)
 script = ExtResource("2_cvs8e")
 min_angle_deg = -20.0
 max_angle_deg = 20.0
 
-[node name="NinePatchRect" type="NinePatchRect" parent="TitleBlock2"]
+[node name="NinePatchRect" type="NinePatchRect" parent="MainMenuWorld/TitleBlock2"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -120,7 +130,7 @@ patch_margin_top = 3
 patch_margin_right = 3
 patch_margin_bottom = 3
 
-[node name="RichTextLabel" type="RichTextLabel" parent="TitleBlock2"]
+[node name="RichTextLabel" type="RichTextLabel" parent="MainMenuWorld/TitleBlock2"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -133,22 +143,23 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_3vhnt")
+theme_type_variation = &"Box"
 theme_override_font_sizes/normal_font_size = 48
 text = "With"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TitleBlock2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainMenuWorld/TitleBlock2"]
 shape = SubResource("RectangleShape2D_avyyk")
 
-[node name="TitleBlock3" type="RigidBody2D" parent="."]
+[node name="TitleBlock3" type="RigidBody2D" parent="MainMenuWorld"]
 position = Vector2(715, -66)
 script = ExtResource("2_cvs8e")
 min_angle_deg = -45.0
 max_angle_deg = 45.0
 
-[node name="NinePatchRect" type="NinePatchRect" parent="TitleBlock3"]
+[node name="NinePatchRect" type="NinePatchRect" parent="MainMenuWorld/TitleBlock3"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -165,7 +176,7 @@ patch_margin_top = 3
 patch_margin_right = 3
 patch_margin_bottom = 3
 
-[node name="RichTextLabel" type="RichTextLabel" parent="TitleBlock3"]
+[node name="RichTextLabel" type="RichTextLabel" parent="MainMenuWorld/TitleBlock3"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -178,20 +189,21 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_3vhnt")
+theme_type_variation = &"Box"
 text = "Care"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TitleBlock3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainMenuWorld/TitleBlock3"]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_20kjo")
 
-[node name="Ground" type="StaticBody2D" parent="."]
+[node name="Ground" type="StaticBody2D" parent="MainMenuWorld"]
 z_index = 1
 position = Vector2(582, 320)
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Ground"]
+[node name="NinePatchRect" type="NinePatchRect" parent="MainMenuWorld/Ground"]
 modulate = Color(0.81, 0.81, 0.81, 1)
 custom_minimum_size = Vector2(57.475, 0)
 offset_left = -500.0
@@ -204,7 +216,7 @@ patch_margin_top = 4
 patch_margin_right = 4
 patch_margin_bottom = 4
 
-[node name="Stripes" type="Sprite2D" parent="Ground"]
+[node name="Stripes" type="Sprite2D" parent="MainMenuWorld/Ground"]
 texture_repeat = 2
 position = Vector2(-490, -13)
 texture = ExtResource("5_wh7ar")
@@ -212,10 +224,10 @@ centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 980, 8)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainMenuWorld/Ground"]
 shape = SubResource("RectangleShape2D_pew8i")
 
-[node name="GroundMarker" type="Marker2D" parent="Ground"]
+[node name="GroundMarker" type="Marker2D" parent="MainMenuWorld/Ground"]
 unique_name_in_owner = true
 position = Vector2(0, -16)
 
@@ -268,3 +280,7 @@ centered = false
 position = Vector2(512, 512)
 texture = ExtResource("7_qf535")
 centered = false
+
+[node name="OptionsWorld" parent="." instance=ExtResource("10_k2h8y")]
+unique_name_in_owner = true
+visible = false
