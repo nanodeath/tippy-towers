@@ -13,9 +13,8 @@ radius = 32.0
 [node name="Root" type="Node2D"]
 script = ExtResource("1_ltasc")
 
-[node name="ChainAnchor" type="CharacterBody2D" parent="."]
+[node name="ChainAnchor" type="StaticBody2D" parent="."]
 position = Vector2(-1, 30)
-motion_mode = 1
 
 [node name="PinJoint2D" type="PinJoint2D" parent="ChainAnchor"]
 position = Vector2(0, -30)
