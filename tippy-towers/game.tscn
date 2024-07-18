@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://chss5a6j3kny4"]
+[gd_scene load_steps=65 format=3 uid="uid://chss5a6j3kny4"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_7hxrq"]
 [ext_resource type="Texture2D" uid="uid://p5f1hvknc1bl" path="res://icon.svg" id="1_qfxxw"]
@@ -41,6 +41,7 @@
 [ext_resource type="PackedScene" uid="uid://dx70bhqmoijyn" path="res://scenes/next_item_handle.tscn" id="39_rx6ax"]
 [ext_resource type="Script" path="res://scripts/main_menu_parallax.gd" id="40_woef3"]
 [ext_resource type="Texture2D" uid="uid://cis2ij4gihs7i" path="res://art/bg.png" id="41_jwfsb"]
+[ext_resource type="Texture2D" uid="uid://h2mqidhc37at" path="res://art/bg2.png" id="41_od7uf"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_f1x13"]
 load_path = "res://.godot/imported/ui_speedup_horizontal.png-ddf5cb0e5a75bad7616da00f5c9eecd0.ctex"
@@ -663,8 +664,32 @@ rotation = 0.171317
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 script = ExtResource("40_woef3")
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
 modulate = Color(1, 1, 1, 0.156863)
+motion_scale = Vector2(0.3, 0.3)
+motion_mirroring = Vector2(1024, 1024)
+
+[node name="Bg" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource("41_od7uf")
+centered = false
+
+[node name="Bg2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(0, 512)
+texture = ExtResource("41_od7uf")
+centered = false
+
+[node name="Bg3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(512, 0)
+texture = ExtResource("41_od7uf")
+centered = false
+
+[node name="Bg4" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(512, 512)
+texture = ExtResource("41_od7uf")
+centered = false
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color(0.15, 0.15, 0.15, 1)
 motion_scale = Vector2(0.5, 0.5)
 motion_mirroring = Vector2(1024, 1024)
 

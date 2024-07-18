@@ -5,6 +5,7 @@ class_name MainMenuUi extends Container
 
 @onready var main_menu = $".."
 @onready var parallax_layer = $"../ParallaxBackground/ParallaxLayer"
+@onready var parallax_layer_2 = $"../ParallaxBackground/ParallaxLayer2"
 
 func _ready():
 	play_button.pressed.connect(self._play_button_pressed)
@@ -18,6 +19,7 @@ func _ready():
 
 func _play_button_pressed():
 	var tween := create_tween()
-	tween.tween_property(main_menu, "modulate", Color.TRANSPARENT, 1)
-	tween.parallel().tween_property(parallax_layer, "modulate", Color.TRANSPARENT, 1)
+	tween.tween_property(main_menu, "modulate", Color.BLACK, 1)
+	tween.parallel().tween_property(parallax_layer, "modulate", Color.BLACK, 1)
+	tween.parallel().tween_property(parallax_layer_2, "modulate", Color.BLACK, 1)
 	tween.tween_callback(func(): get_tree().change_scene_to_file("res://game.tscn"))
