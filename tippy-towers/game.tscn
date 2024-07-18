@@ -378,10 +378,10 @@ text = "Retry"
 
 [node name="DaysSinceLastAccidentCounter2" type="RichTextLabel" parent="CanvasLayer/EndGameScreen"]
 layout_mode = 2
-offset_left = 646.0
-offset_top = 374.0
-offset_right = 673.0
-offset_bottom = 441.0
+offset_left = 630.0
+offset_top = 317.0
+offset_right = 657.0
+offset_bottom = 384.0
 rotation = 0.143372
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -395,18 +395,18 @@ autowrap_mode = 0
 modulate = Color(1, 1, 1, 0.627451)
 layout_mode = 2
 offset_left = 544.0
-offset_top = 371.0
+offset_top = 311.0
 offset_right = 608.0
-offset_bottom = 435.0
+offset_bottom = 375.0
 texture = ExtResource("7_kq8b6")
 
 [node name="X2" type="TextureRect" parent="CanvasLayer/EndGameScreen"]
 modulate = Color(1, 1, 1, 0.627451)
 layout_mode = 0
 offset_left = 544.0
-offset_top = 371.0
+offset_top = 311.0
 offset_right = 608.0
-offset_bottom = 435.0
+offset_bottom = 375.0
 texture = ExtResource("8_2q1k6")
 
 [node name="DayFlythrough" type="RichTextLabel" parent="CanvasLayer"]
