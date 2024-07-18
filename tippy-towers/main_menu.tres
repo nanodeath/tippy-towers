@@ -1,5 +1,6 @@
 [gd_resource type="Theme" format=3 uid="uid://cgudjne6cl7nl"]
 
 [resource]
+Button/font_sizes/font_size = 48
 RichTextLabel/colors/default_color = Color(0.2, 0.1, 0, 1)
 RichTextLabel/font_sizes/normal_font_size = 72
