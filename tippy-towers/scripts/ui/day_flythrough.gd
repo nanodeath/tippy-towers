@@ -7,6 +7,7 @@ func _ready():
 	day_manager.new_day.connect(func(d): trigger(d+1))
 
 func trigger(day: int):
+	visible = true
 	text = "Day " + str(day)
 	var width := get_content_width()
 	var viewport_size := get_viewport().size as Vector2i

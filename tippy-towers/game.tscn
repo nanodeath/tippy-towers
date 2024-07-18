@@ -315,9 +315,6 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/EndGameScreen/PanelContainer/CenterContainer"]
 layout_mode = 2
 
-[node name="Title" type="RichTextLabel" parent="CanvasLayer/EndGameScreen/PanelContainer/CenterContainer/VBoxContainer"]
-layout_mode = 2
-
 [node name="GridContainer" type="GridContainer" parent="CanvasLayer/EndGameScreen/PanelContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
 columns = 2
@@ -368,6 +365,17 @@ fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/EndGameScreen/PanelContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="RetryButton" type="Button" parent="CanvasLayer/EndGameScreen/PanelContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 48
+text = "Retry"
+
 [node name="DaysSinceLastAccidentCounter2" type="RichTextLabel" parent="CanvasLayer/EndGameScreen"]
 layout_mode = 2
 offset_left = 646.0
@@ -402,6 +410,7 @@ offset_bottom = 435.0
 texture = ExtResource("8_2q1k6")
 
 [node name="DayFlythrough" type="RichTextLabel" parent="CanvasLayer"]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
