@@ -1,16 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://b3cuxi3hana1g"]
+[gd_scene load_steps=6 format=3 uid="uid://b3cuxi3hana1g"]
 
+[ext_resource type="Script" path="res://scripts/box.gd" id="1_2a7ea"]
 [ext_resource type="Texture2D" uid="uid://ba6rsdvik3rlm" path="res://art/junk/box_128x128.png" id="1_8ereu"]
+[ext_resource type="Texture2D" uid="uid://ccg58psqaumv1" path="res://art/junk/box_128x128_b.png" id="2_cqo4u"]
+[ext_resource type="Texture2D" uid="uid://dj3elxssugcdo" path="res://art/junk/box_128x128_v.png" id="3_sp5be"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aovc0"]
 size = Vector2(128, 128)
 
-[node name="Box" type="RigidBody2D" groups=["junk"]]
+[node name="Box" type="RigidBody2D" node_paths=PackedStringArray("sprites") groups=["junk"]]
 collision_layer = 2
 collision_mask = 3
+script = ExtResource("1_2a7ea")
+sprites = [NodePath("Sprite2D"), NodePath("Sprite2D2"), NodePath("Sprite2D3")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_8ereu")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+texture = ExtResource("2_cqo4u")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+texture = ExtResource("3_sp5be")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_aovc0")
