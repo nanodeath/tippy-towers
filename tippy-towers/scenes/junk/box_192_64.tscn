@@ -1,16 +1,38 @@
-[gd_scene load_steps=3 format=3 uid="uid://cn2rra55iei73"]
+[gd_scene load_steps=8 format=3 uid="uid://cn2rra55iei73"]
 
+[ext_resource type="Script" path="res://scripts/box.gd" id="1_j2dyn"]
 [ext_resource type="Texture2D" uid="uid://yn8dxt1n02j7" path="res://art/junk/box_192x64.png" id="1_phwrd"]
+[ext_resource type="Gradient" uid="uid://ligykibrqapt" path="res://scenes/junk/noise_color_ramp.tres" id="3_x2nqr"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_66gmm"]
+blend_mode = 3
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6ofey"]
+fractal_octaves = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1582q"]
+width = 128
+height = 128
+generate_mipmaps = false
+color_ramp = ExtResource("3_x2nqr")
+noise = SubResource("FastNoiseLite_6ofey")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aovc0"]
 size = Vector2(192, 64)
 
-[node name="Box" type="RigidBody2D" groups=["junk"]]
+[node name="Box" type="RigidBody2D" node_paths=PackedStringArray("sprites") groups=["junk"]]
 collision_layer = 2
 collision_mask = 3
+script = ExtResource("1_j2dyn")
+sprites = [NodePath("Sprite2D")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_phwrd")
+
+[node name="Noise" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_66gmm")
+scale = Vector2(1.5, 0.5)
+texture = SubResource("NoiseTexture2D_1582q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_aovc0")

@@ -1,9 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://b3cuxi3hana1g"]
+[gd_scene load_steps=10 format=3 uid="uid://b3cuxi3hana1g"]
 
 [ext_resource type="Script" path="res://scripts/box.gd" id="1_2a7ea"]
 [ext_resource type="Texture2D" uid="uid://ba6rsdvik3rlm" path="res://art/junk/box_128x128.png" id="1_8ereu"]
 [ext_resource type="Texture2D" uid="uid://ccg58psqaumv1" path="res://art/junk/box_128x128_b.png" id="2_cqo4u"]
 [ext_resource type="Texture2D" uid="uid://dj3elxssugcdo" path="res://art/junk/box_128x128_v.png" id="3_sp5be"]
+[ext_resource type="Gradient" uid="uid://ligykibrqapt" path="res://scenes/junk/noise_color_ramp.tres" id="5_yjmsr"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_01iun"]
+blend_mode = 3
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ldk0q"]
+fractal_octaves = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_se637"]
+width = 128
+height = 128
+generate_mipmaps = false
+color_ramp = ExtResource("5_yjmsr")
+noise = SubResource("FastNoiseLite_ldk0q")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aovc0"]
 size = Vector2(128, 128)
@@ -22,6 +36,10 @@ texture = ExtResource("2_cqo4u")
 
 [node name="Sprite2D3" type="Sprite2D" parent="."]
 texture = ExtResource("3_sp5be")
+
+[node name="Noise" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_01iun")
+texture = SubResource("NoiseTexture2D_se637")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_aovc0")
