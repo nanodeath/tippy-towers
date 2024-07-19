@@ -11,6 +11,8 @@ func _ready():
 
 func _on_pressed():
 	options_container.visible = true
+	get_tree().paused = true
 
 func _on_done():
 	options_container.visible = false
+	get_tree().paused = false

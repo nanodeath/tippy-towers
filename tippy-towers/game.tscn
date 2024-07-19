@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://chss5a6j3kny4"]
+[gd_scene load_steps=70 format=3 uid="uid://chss5a6j3kny4"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_7hxrq"]
 [ext_resource type="Texture2D" uid="uid://p5f1hvknc1bl" path="res://icon.svg" id="1_qfxxw"]
@@ -45,6 +45,7 @@
 [ext_resource type="Script" path="res://scripts/main_menu_parallax.gd" id="40_woef3"]
 [ext_resource type="Texture2D" uid="uid://cis2ij4gihs7i" path="res://art/bg.png" id="41_jwfsb"]
 [ext_resource type="Texture2D" uid="uid://h2mqidhc37at" path="res://art/bg2.png" id="41_od7uf"]
+[ext_resource type="Script" path="res://scripts/game_stopwatch.gd" id="43_61dmv"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_f1x13"]
 load_path = "res://.godot/imported/ui_speedup_horizontal.png-ddf5cb0e5a75bad7616da00f5c9eecd0.ctex"
@@ -173,6 +174,7 @@ size = Vector2(10000, 500)
 script = ExtResource("1_7hxrq")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
 anchors_preset = 15
@@ -370,6 +372,20 @@ fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
+[node name="TimeElapsed" type="RichTextLabel" parent="CanvasLayer/EndGameScreen/PanelContainer/CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Time Elapsed"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="TimeElapsedValue" type="RichTextLabel" parent="CanvasLayer/EndGameScreen/PanelContainer/CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "10.000s"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
 [node name="DaysSinceLastAccident" type="RichTextLabel" parent="CanvasLayer/EndGameScreen/PanelContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
 theme_type_variation = &"Big"
@@ -401,10 +417,10 @@ text = "Retry"
 
 [node name="DaysSinceLastAccidentCounter2" type="RichTextLabel" parent="CanvasLayer/EndGameScreen"]
 layout_mode = 2
-offset_left = 630.0
-offset_top = 317.0
-offset_right = 657.0
-offset_bottom = 384.0
+offset_left = 634.0
+offset_top = 346.0
+offset_right = 661.0
+offset_bottom = 413.0
 rotation = 0.143372
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -418,18 +434,18 @@ autowrap_mode = 0
 modulate = Color(1, 1, 1, 0.627451)
 layout_mode = 2
 offset_left = 544.0
-offset_top = 311.0
+offset_top = 334.0
 offset_right = 608.0
-offset_bottom = 375.0
+offset_bottom = 398.0
 texture = ExtResource("7_kq8b6")
 
 [node name="X2" type="TextureRect" parent="CanvasLayer/EndGameScreen"]
 modulate = Color(1, 1, 1, 0.627451)
 layout_mode = 0
 offset_left = 544.0
-offset_top = 311.0
+offset_top = 334.0
 offset_right = 608.0
-offset_bottom = 375.0
+offset_bottom = 398.0
 texture = ExtResource("8_2q1k6")
 
 [node name="DayFlythrough" type="RichTextLabel" parent="CanvasLayer"]
@@ -454,6 +470,7 @@ script = ExtResource("11_bd1tt")
 
 [node name="OptionsContainer" type="PanelContainer" parent="CanvasLayer"]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(500, 648)
 anchors_preset = 8
 anchor_left = 0.5
@@ -695,6 +712,10 @@ packages_per_day = 5
 [node name="Sign" parent="." instance=ExtResource("35_d8xem")]
 position = Vector2(1026, 620)
 rotation = 0.171317
+
+[node name="GameStopwatch" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("43_61dmv")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 script = ExtResource("40_woef3")

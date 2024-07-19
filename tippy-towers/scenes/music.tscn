@@ -14,6 +14,7 @@ stream_2/stream = ExtResource("3_aa0yy")
 stream_2/weight = 1.0
 
 [node name="Music" type="Node"]
+process_mode = 3
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_uvmvl")
