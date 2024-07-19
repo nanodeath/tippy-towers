@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://di3hmxxebnw6m"]
+[gd_scene load_steps=5 format=3 uid="uid://di3hmxxebnw6m"]
 
 [ext_resource type="Theme" uid="uid://cgudjne6cl7nl" path="res://main_menu.tres" id="1_3pg10"]
 [ext_resource type="Script" path="res://scripts/ui/options.gd" id="1_6ss8e"]
 [ext_resource type="Script" path="res://scripts/ui/audio_slider.gd" id="2_8xaf0"]
+[ext_resource type="PackedScene" uid="uid://dqssjjf62lnxe" path="res://scenes/go_back.tscn" id="4_tvghc"]
 
 [node name="OptionsWorld" type="Node2D"]
 script = ExtResource("1_6ss8e")
@@ -20,7 +21,7 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer"]
+[node name="Title" type="RichTextLabel" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -89,9 +90,6 @@ value = 1.0
 script = ExtResource("2_8xaf0")
 audio_bus = &"SFX"
 
-[node name="GoBack" type="Button" parent="MarginContainer"]
+[node name="GoBack" parent="MarginContainer" instance=ExtResource("4_tvghc")]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-text = "Back"

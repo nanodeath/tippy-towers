@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c0q1hpo66rhyb"]
+[gd_scene load_steps=17 format=3 uid="uid://c0q1hpo66rhyb"]
 
 [ext_resource type="Theme" uid="uid://cgudjne6cl7nl" path="res://main_menu.tres" id="1_3vhnt"]
 [ext_resource type="Script" path="res://scripts/title_block.gd" id="2_cvs8e"]
@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://cis2ij4gihs7i" path="res://art/bg.png" id="7_qf535"]
 [ext_resource type="Texture2D" uid="uid://h2mqidhc37at" path="res://art/bg2.png" id="8_emrof"]
 [ext_resource type="PackedScene" uid="uid://di3hmxxebnw6m" path="res://scenes/options_screen.tscn" id="10_k2h8y"]
+[ext_resource type="Script" path="res://scripts/ui/credits.gd" id="11_fbfl2"]
+[ext_resource type="PackedScene" uid="uid://dqssjjf62lnxe" path="res://scenes/go_back.tscn" id="12_v18x7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j76jv"]
 size = Vector2(256, 96)
@@ -33,19 +35,20 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_top = 348.0
+offset_top = 351.0
 offset_right = 1152.0
 offset_bottom = 648.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("1_3vhnt")
+theme_override_constants/margin_bottom = 16
 script = ExtResource("2_jhrpc")
 
 [node name="Buttons" type="VBoxContainer" parent="MainMenuWorld/UI"]
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_vertical = 8
 theme_override_constants/separation = 14
 
 [node name="PlayButton" type="Button" parent="MainMenuWorld/UI/Buttons"]
@@ -56,6 +59,12 @@ text = "Play"
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Options"
+
+[node name="CreditsButton" type="Button" parent="MainMenuWorld/UI/Buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Credits
+"
 
 [node name="ByLine" type="RichTextLabel" parent="MainMenuWorld/UI"]
 layout_mode = 2
@@ -284,3 +293,61 @@ centered = false
 [node name="OptionsWorld" parent="." instance=ExtResource("10_k2h8y")]
 unique_name_in_owner = true
 visible = false
+
+[node name="CreditsWorld" type="MarginContainer" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_3vhnt")
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+script = ExtResource("11_fbfl2")
+
+[node name="Title" type="RichTextLabel" parent="CreditsWorld"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_type_variation = &"Title"
+text = "Credits"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CreditsWorld"]
+custom_minimum_size = Vector2(400, 300)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+
+[node name="Max" type="Label" parent="CreditsWorld/VBoxContainer"]
+layout_mode = 2
+text = "Game concept, design, art, implementation by Max Aller."
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CreditsWorld/VBoxContainer"]
+layout_mode = 2
+
+[node name="Music" type="Label" parent="CreditsWorld/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Music by OceanKing via pixabay:"
+
+[node name="LinkButton" type="LinkButton" parent="CreditsWorld/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Source"
+uri = "https://pixabay.com/users/oceanking-44601375/"
+
+[node name="Disclaimer" type="Label" parent="CreditsWorld/VBoxContainer"]
+custom_minimum_size = Vector2(400, 200)
+layout_mode = 2
+text = "The Amazon smile logo appearing in this game is a trademark of Amazon.com, Inc. This game is not affiliated with, endorsed, sponsored, or specifically approved by Amazon.com, Inc. All product and company names are trademarks™ or registered® trademarks of their respective holders. Use of them does not imply any affiliation with or endorsement by them."
+autowrap_mode = 3
+
+[node name="GoBack" parent="CreditsWorld" instance=ExtResource("12_v18x7")]
+layout_mode = 2

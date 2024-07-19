@@ -3,10 +3,12 @@ class_name MainMenuUi extends Container
 @onready var buttons = $Buttons
 @onready var play_button = $Buttons/PlayButton
 @onready var options_button = $Buttons/OptionsButton
+@onready var credits_button = $Buttons/CreditsButton
 @onready var by_line = $ByLine
 
 @onready var main_menu = $".."
 @onready var options_world = %OptionsWorld
+@onready var credits_world = $"../../CreditsWorld"
 
 @onready var parallax_layer_2 = $"../../ParallaxBackground/ParallaxLayer2"
 @onready var parallax_layer = $"../../ParallaxBackground/ParallaxLayer"
@@ -15,6 +17,8 @@ func _ready():
 	play_button.pressed.connect(self._play_button_pressed)
 	options_button.pressed.connect(self._options_button_pressed)
 	options_world.done.connect(self._options_done)
+	credits_button.pressed.connect(self._credits_button_pressed)
+	credits_world.done.connect(self._credits_done)
 	
 	buttons.modulate = Color.TRANSPARENT
 	by_line.modulate = Color.TRANSPARENT
@@ -39,3 +43,12 @@ func _options_button_pressed():
 func _options_done():
 	main_menu.visible = true
 	options_world.visible = false
+
+func _credits_button_pressed():
+	main_menu.visible = false
+	credits_world.visible = true
+	
+func _credits_done():
+	main_menu.visible = true
+	credits_world.visible = false
+	
