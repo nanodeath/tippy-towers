@@ -70,7 +70,6 @@ autowrap_mode = 0
 [node name="TitleBlock1" type="RigidBody2D" parent="MainMenuWorld"]
 position = Vector2(546, -355)
 rotation = -0.020944
-scale = Vector2(1, 1)
 script = ExtResource("2_cvs8e")
 min_angle_deg = -45.0
 max_angle_deg = 45.0
