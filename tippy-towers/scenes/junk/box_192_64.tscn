@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cn2rra55iei73"]
+[gd_scene load_steps=9 format=3 uid="uid://cn2rra55iei73"]
 
 [ext_resource type="Script" path="res://scripts/box.gd" id="1_j2dyn"]
 [ext_resource type="Texture2D" uid="uid://yn8dxt1n02j7" path="res://art/junk/box_192x64.png" id="1_phwrd"]
 [ext_resource type="Gradient" uid="uid://ligykibrqapt" path="res://scenes/junk/noise_color_ramp.tres" id="3_x2nqr"]
+[ext_resource type="AudioStream" uid="uid://c7063f8afhy4e" path="res://scenes/junk/box_sfx_stream.tres" id="4_2xekx"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_66gmm"]
 blend_mode = 3
@@ -36,3 +37,7 @@ texture = SubResource("NoiseTexture2D_1582q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_aovc0")
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_2xekx")
+bus = &"SFX"

@@ -1,0 +1,24 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=7 format=3 uid="uid://c7063f8afhy4e"]
+
+[ext_resource type="AudioStream" uid="uid://cmj7buge1jaqt" path="res://vendor/pixabay_J1987/cardboardbox-107634-1.ogg" id="1_yb4hx"]
+[ext_resource type="AudioStream" uid="uid://0mtflmug6qvn" path="res://vendor/pixabay_J1987/cardboardbox-107634-2.ogg" id="2_yyqic"]
+[ext_resource type="AudioStream" uid="uid://jtubufiqmj51" path="res://vendor/pixabay_J1987/cardboardbox-107634-4.ogg" id="3_sp6ts"]
+[ext_resource type="AudioStream" uid="uid://sjil617386f1" path="res://vendor/pixabay_J1987/cardboardbox-107634-5.ogg" id="4_dlylj"]
+[ext_resource type="AudioStream" uid="uid://c2j08sbvtoyaq" path="res://vendor/pixabay_J1987/cardboardbox-107634-6.ogg" id="5_stawi"]
+[ext_resource type="AudioStream" uid="uid://kqcfljrl2ooc" path="res://vendor/pixabay_J1987/cardboardbox-107634-7.ogg" id="6_6iblu"]
+
+[resource]
+random_pitch = 1.5
+streams_count = 6
+stream_0/stream = ExtResource("1_yb4hx")
+stream_0/weight = 2.0
+stream_1/stream = ExtResource("2_yyqic")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("3_sp6ts")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("4_dlylj")
+stream_3/weight = 1.0
+stream_4/stream = ExtResource("5_stawi")
+stream_4/weight = 1.0
+stream_5/stream = ExtResource("6_6iblu")
+stream_5/weight = 1.0

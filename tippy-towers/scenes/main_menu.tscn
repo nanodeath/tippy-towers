@@ -348,6 +348,18 @@ layout_mode = 2
 text = "Source"
 uri = "https://pixabay.com/users/oceanking-44601375/"
 
+[node name="HBoxContainer2" type="HBoxContainer" parent="CreditsWorld/VBoxContainer"]
+layout_mode = 2
+
+[node name="SFX" type="Label" parent="CreditsWorld/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "SFX by j1987 via pixabay:"
+
+[node name="LinkButton" type="LinkButton" parent="CreditsWorld/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Source"
+uri = "https://pixabay.com/sound-effects/cardboardbox-107634/"
+
 [node name="Godot" type="HBoxContainer" parent="CreditsWorld/VBoxContainer"]
 layout_mode = 2
 
