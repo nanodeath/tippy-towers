@@ -15,12 +15,12 @@ func _ready():
 func _process(delta):
 	var txt := ""
 	var time := spawn_timer.time_left as float
-	if time > 10:
+	if time >= 10:
 		txt = str(ceili(time))
 	elif time >= 5:
-		txt = str(snappedf(time, 0.1))
+		txt = str("%.1f" % time)
 	else:
-		txt = str(snappedf(time, 0.01))
+		txt = str("%.2f" % time)
 	if override:
 		txt = override
 	self.time.text = txt
