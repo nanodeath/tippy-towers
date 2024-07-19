@@ -10,7 +10,7 @@ env:
   PROJECT_PATH: tippy-towers
   # See https://itch.io/docs/butler/pushing.html for more information here.
   # This is the user/game you're uploading.
-  ITCHIO_PROJECT_NAME: nanodeath/tippy-towers
+  ITCHIO_PROJECT_NAME: nanodeath/handle-with-care
   ITCHIO_CHANNEL_WEB: web
   
 # To auth pushes to itch.io, you'll also need to set a BUTLER_API_KEY variable 
