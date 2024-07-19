@@ -8,7 +8,7 @@ var override: String
 func _ready():
 	spawn_timer.tick.connect(func():
 		override = "INCOMING"
-		var timer := get_tree().create_timer(2.0)
+		var timer := get_tree().create_timer(2.0, false)
 		timer.timeout.connect(func(): override = "")
 	)
 
