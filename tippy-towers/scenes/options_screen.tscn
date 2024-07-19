@@ -31,7 +31,14 @@ fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
-[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -39,14 +46,14 @@ theme_override_constants/h_separation = 24
 theme_override_constants/v_separation = 18
 columns = 2
 
-[node name="OverallVolume" type="RichTextLabel" parent="MarginContainer/GridContainer"]
+[node name="OverallVolume" type="RichTextLabel" parent="MarginContainer/HBoxContainer/GridContainer"]
 layout_mode = 2
 text = "Overall Volume"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
-[node name="OverallVolumeSlider" type="HSlider" parent="MarginContainer/GridContainer"]
+[node name="OverallVolumeSlider" type="HSlider" parent="MarginContainer/HBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_vertical = 4
@@ -56,14 +63,14 @@ value = 1.0
 script = ExtResource("2_8xaf0")
 audio_bus = &"Master"
 
-[node name="MusicVolume" type="RichTextLabel" parent="MarginContainer/GridContainer"]
+[node name="MusicVolume" type="RichTextLabel" parent="MarginContainer/HBoxContainer/GridContainer"]
 layout_mode = 2
 text = "Music Volume"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
-[node name="MusicVolumeSlider" type="HSlider" parent="MarginContainer/GridContainer"]
+[node name="MusicVolumeSlider" type="HSlider" parent="MarginContainer/HBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_vertical = 4
@@ -73,14 +80,14 @@ value = 1.0
 script = ExtResource("2_8xaf0")
 audio_bus = &"Music"
 
-[node name="SFXVolume" type="RichTextLabel" parent="MarginContainer/GridContainer"]
+[node name="SFXVolume" type="RichTextLabel" parent="MarginContainer/HBoxContainer/GridContainer"]
 layout_mode = 2
 text = "SFX Volume"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
-[node name="SFXVolumeSlider" type="HSlider" parent="MarginContainer/GridContainer"]
+[node name="SFXVolumeSlider" type="HSlider" parent="MarginContainer/HBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_vertical = 4
@@ -89,6 +96,137 @@ step = 0.05
 value = 1.0
 script = ExtResource("2_8xaf0")
 audio_bus = &"SFX"
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="GridContainer2" type="GridContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+columns = 4
+
+[node name="MoveCraneLeftLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer/GridContainer2"]
+layout_mode = 2
+size_flags_vertical = 4
+text = "Move Crane Left"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="MoveCraneLeft1" type="Button" parent="MarginContainer/HBoxContainer/GridContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_type_variation = &"ControlButton"
+disabled = true
+text = "A"
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/HBoxContainer/GridContainer2"]
+layout_mode = 2
+
+[node name="MoveCraneLeft2" type="Button" parent="MarginContainer/HBoxContainer/GridContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_type_variation = &"ControlButton"
+disabled = true
+text = "LeftArrow"
+
+[node name="MoveCraneRight" type="RichTextLabel" parent="MarginContainer/HBoxContainer/GridContainer2"]
+layout_mode = 2
+size_flags_vertical = 4
+text = "Move Crane Right"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="MoveCraneRight1" type="Button" parent="MarginContainer/HBoxContainer/GridContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_type_variation = &"ControlButton"
+disabled = true
+text = "D"
+
+[node name="VSeparator2" type="VSeparator" parent="MarginContainer/HBoxContainer/GridContainer2"]
+layout_mode = 2
+
+[node name="MoveCraneRight2" type="Button" parent="MarginContainer/HBoxContainer/GridContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_type_variation = &"ControlButton"
+disabled = true
+text = "RightArrow"
+
+[node name="MoveMagnetDown" type="RichTextLabel" parent="MarginContainer/HBoxContainer/GridContainer2"]
+layout_mode = 2
+size_flags_vertical = 4
+text = "Lower Magnet"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="MoveMagnetDown1" type="Button" parent="MarginContainer/HBoxContainer/GridContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_type_variation = &"ControlButton"
+disabled = true
+text = "S"
+
+[node name="VSeparator3" type="VSeparator" parent="MarginContainer/HBoxContainer/GridContainer2"]
+layout_mode = 2
+
+[node name="MoveMagnetDown2" type="Button" parent="MarginContainer/HBoxContainer/GridContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_type_variation = &"ControlButton"
+disabled = true
+text = "DownArrow"
+
+[node name="MoveMagnetUp" type="RichTextLabel" parent="MarginContainer/HBoxContainer/GridContainer2"]
+layout_mode = 2
+size_flags_vertical = 4
+text = "Raise Magnet"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="MoveMagnetUp1" type="Button" parent="MarginContainer/HBoxContainer/GridContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_type_variation = &"ControlButton"
+disabled = true
+text = "W"
+
+[node name="VSeparator4" type="VSeparator" parent="MarginContainer/HBoxContainer/GridContainer2"]
+layout_mode = 2
+
+[node name="MoveMagnetUp2" type="Button" parent="MarginContainer/HBoxContainer/GridContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_type_variation = &"ControlButton"
+disabled = true
+text = "UpArrow"
+
+[node name="ActivateMagnet" type="RichTextLabel" parent="MarginContainer/HBoxContainer/GridContainer2"]
+layout_mode = 2
+size_flags_vertical = 4
+text = "Activate Magnet"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="ActivateMagnet1" type="Button" parent="MarginContainer/HBoxContainer/GridContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_type_variation = &"ControlButton"
+disabled = true
+text = "Space"
 
 [node name="GoBack" parent="MarginContainer" instance=ExtResource("4_tvghc")]
 unique_name_in_owner = true
