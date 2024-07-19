@@ -449,7 +449,6 @@ offset_bottom = 398.0
 texture = ExtResource("8_2q1k6")
 
 [node name="DayFlythrough" type="RichTextLabel" parent="CanvasLayer"]
-visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -467,6 +466,18 @@ fit_content = true
 scroll_active = false
 autowrap_mode = 0
 script = ExtResource("11_bd1tt")
+
+[node name="DayFlythroughLeft" type="Marker2D" parent="CanvasLayer"]
+position = Vector2(-189, 280)
+gizmo_extents = 64.0
+
+[node name="DayFlythroughCenter" type="Marker2D" parent="CanvasLayer"]
+position = Vector2(490, 280)
+gizmo_extents = 64.0
+
+[node name="DayFlythroughRight" type="Marker2D" parent="CanvasLayer"]
+position = Vector2(1171, 280)
+gizmo_extents = 64.0
 
 [node name="OptionsContainer" type="PanelContainer" parent="CanvasLayer"]
 unique_name_in_owner = true
