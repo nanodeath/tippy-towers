@@ -34,7 +34,7 @@ autowrap_mode = 0
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/h_separation = 14
+theme_override_constants/h_separation = 24
 theme_override_constants/v_separation = 18
 columns = 2
 
