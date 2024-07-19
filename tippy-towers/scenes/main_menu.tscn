@@ -57,12 +57,16 @@ layout_mode = 2
 text = "Play"
 
 [node name="OptionsButton" type="Button" parent="MainMenuWorld/UI/Buttons"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 32
 text = "Options"
 
 [node name="CreditsButton" type="Button" parent="MainMenuWorld/UI/Buttons"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 32
 text = "Credits
 "
