@@ -14,13 +14,13 @@
 [ext_resource type="PackedScene" uid="uid://dqssjjf62lnxe" path="res://scenes/go_back.tscn" id="12_v18x7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j76jv"]
-size = Vector2(256, 96)
+size = Vector2(296, 122)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_avyyk"]
-size = Vector2(128, 64)
+size = Vector2(156, 86)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_20kjo"]
-size = Vector2(166.4, 76.8)
+size = Vector2(212, 100)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pew8i"]
 size = Vector2(1000, 32)
@@ -78,15 +78,15 @@ scroll_active = false
 autowrap_mode = 0
 
 [node name="TitleBlock1" type="RigidBody2D" parent="MainMenuWorld"]
-position = Vector2(546, -355)
+position = Vector2(544, -355)
 rotation = -0.020944
 script = ExtResource("2_cvs8e")
 min_angle_deg = -45.0
 max_angle_deg = 45.0
 
 [node name="NinePatchRect" type="NinePatchRect" parent="MainMenuWorld/TitleBlock1"]
-offset_left = -128.0
-offset_top = -48.0
+offset_left = -148.0
+offset_top = -61.0
 scale = Vector2(2, 2)
 texture = ExtResource("3_8365y")
 patch_margin_left = 3
@@ -117,7 +117,7 @@ autowrap_mode = 0
 shape = SubResource("RectangleShape2D_j76jv")
 
 [node name="TitleBlock2" type="RigidBody2D" parent="MainMenuWorld"]
-position = Vector2(634, -187)
+position = Vector2(644, -202)
 script = ExtResource("2_cvs8e")
 min_angle_deg = -20.0
 max_angle_deg = 20.0
@@ -128,8 +128,8 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -64.0
-offset_top = -32.0
+offset_left = -78.0
+offset_top = -43.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
@@ -163,7 +163,7 @@ autowrap_mode = 0
 shape = SubResource("RectangleShape2D_avyyk")
 
 [node name="TitleBlock3" type="RigidBody2D" parent="MainMenuWorld"]
-position = Vector2(715, -66)
+position = Vector2(744, -66)
 script = ExtResource("2_cvs8e")
 min_angle_deg = -45.0
 max_angle_deg = 45.0
@@ -174,8 +174,8 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -83.2
-offset_top = -38.4
+offset_left = -106.0
+offset_top = -50.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
