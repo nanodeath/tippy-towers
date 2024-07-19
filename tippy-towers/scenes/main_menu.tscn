@@ -33,7 +33,7 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_top = 324.0
+offset_top = 348.0
 offset_right = 1152.0
 offset_bottom = 648.0
 grow_horizontal = 2
@@ -54,6 +54,7 @@ text = "Play"
 
 [node name="OptionsButton" type="Button" parent="MainMenuWorld/UI/Buttons"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "Options"
 
 [node name="ByLine" type="RichTextLabel" parent="MainMenuWorld/UI"]
