@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c0q1hpo66rhyb"]
+[gd_scene load_steps=18 format=3 uid="uid://c0q1hpo66rhyb"]
 
 [ext_resource type="Theme" uid="uid://cgudjne6cl7nl" path="res://main_menu.tres" id="1_3vhnt"]
 [ext_resource type="Script" path="res://scripts/title_block.gd" id="2_cvs8e"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://h2mqidhc37at" path="res://art/bg2.png" id="8_emrof"]
 [ext_resource type="PackedScene" uid="uid://di3hmxxebnw6m" path="res://scenes/options_screen.tscn" id="10_k2h8y"]
 [ext_resource type="Script" path="res://scripts/ui/credits.gd" id="11_fbfl2"]
+[ext_resource type="Script" path="res://scripts/ui/godot_link.gd" id="12_ritti"]
 [ext_resource type="PackedScene" uid="uid://dqssjjf62lnxe" path="res://scenes/go_back.tscn" id="12_v18x7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j76jv"]
@@ -342,6 +343,18 @@ text = "Music by OceanKing via pixabay:"
 layout_mode = 2
 text = "Source"
 uri = "https://pixabay.com/users/oceanking-44601375/"
+
+[node name="Godot" type="HBoxContainer" parent="CreditsWorld/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CreditsWorld/VBoxContainer/Godot"]
+layout_mode = 2
+text = "Made using "
+
+[node name="GodotLink" type="LinkButton" parent="CreditsWorld/VBoxContainer/Godot"]
+layout_mode = 2
+uri = "https://godotengine.org/"
+script = ExtResource("12_ritti")
 
 [node name="Disclaimer" type="Label" parent="CreditsWorld/VBoxContainer"]
 custom_minimum_size = Vector2(400, 200)
