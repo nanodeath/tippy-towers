@@ -217,7 +217,7 @@ script = ExtResource("2_ha0md")
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/MarginContainer/TimerDisplay"]
 layout_mode = 2
 size_flags_vertical = 0
-text = "Next delivery in:"
+text = "Next package in:"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
