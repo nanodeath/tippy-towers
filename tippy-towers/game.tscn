@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://chss5a6j3kny4"]
+[gd_scene load_steps=69 format=3 uid="uid://chss5a6j3kny4"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_7hxrq"]
 [ext_resource type="Texture2D" uid="uid://p5f1hvknc1bl" path="res://icon.svg" id="1_qfxxw"]
@@ -20,10 +20,13 @@
 [ext_resource type="Texture2D" uid="uid://dffwuwa1tykyk" path="res://art/chalk_x_2.png" id="8_2q1k6"]
 [ext_resource type="PackedScene" uid="uid://b016ebofn2m51" path="res://scenes/junk/box_128_64.tscn" id="8_jedqf"]
 [ext_resource type="Texture2D" uid="uid://celwtttfr3qvc" path="res://art/ui_speedup_vertical.png" id="8_n1sqa"]
+[ext_resource type="Texture2D" uid="uid://d01685cs65lr0" path="res://art/wrench.png" id="9_22dyo"]
 [ext_resource type="PackedScene" uid="uid://c4can45bm31l1" path="res://scenes/junk/box_64_64.tscn" id="9_hseeu"]
+[ext_resource type="Script" path="res://scripts/ui/game_option_button.gd" id="10_034qm"]
 [ext_resource type="Script" path="res://scripts/ui/day_flythrough.gd" id="11_bd1tt"]
 [ext_resource type="Texture2D" uid="uid://ddne6po0kqwal" path="res://art/girder.png" id="12_0yopg"]
 [ext_resource type="Script" path="res://scripts/package_lost_zone.gd" id="14_runno"]
+[ext_resource type="PackedScene" uid="uid://di3hmxxebnw6m" path="res://scenes/options_screen.tscn" id="15_3gdeq"]
 [ext_resource type="Script" path="res://scripts/spawner_group.gd" id="19_rpvsw"]
 [ext_resource type="PackedScene" uid="uid://cn2rra55iei73" path="res://scenes/junk/box_192_64.tscn" id="20_eaue4"]
 [ext_resource type="PackedScene" uid="uid://usyl7xsoi0ur" path="res://scenes/junk/box_triangle_64_64.tscn" id="20_icsjf"]
@@ -64,6 +67,13 @@ load_path = "res://.godot/imported/ui_speedup_vertical.png-15df3b718fd5ab34910dd
 [sub_resource type="AtlasTexture" id="AtlasTexture_gk6v5"]
 atlas = SubResource("CompressedTexture2D_ok1c4")
 region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_khtel"]
+bg_color = Color(0.121569, 0.121569, 0.121569, 0.901961)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uhjy8"]
 size = Vector2(506, 32)
@@ -295,6 +305,13 @@ toggle_mode = true
 texture_normal = SubResource("AtlasTexture_r3nu7")
 texture_pressed = SubResource("AtlasTexture_gk6v5")
 
+[node name="OptionsButton" type="TextureButton" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+texture_normal = ExtResource("9_22dyo")
+script = ExtResource("10_034qm")
+
 [node name="EndGameScreen" type="Control" parent="CanvasLayer"]
 visible = false
 layout_mode = 3
@@ -434,6 +451,24 @@ fit_content = true
 scroll_active = false
 autowrap_mode = 0
 script = ExtResource("11_bd1tt")
+
+[node name="OptionsContainer" type="PanelContainer" parent="CanvasLayer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 648)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -250.0
+offset_right = 200.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_khtel")
+
+[node name="OptionsWorld" parent="CanvasLayer/OptionsContainer" instance=ExtResource("15_3gdeq")]
 
 [node name="CameraTarget" type="Marker2D" parent="."]
 unique_name_in_owner = true
