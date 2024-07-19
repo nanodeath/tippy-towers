@@ -502,6 +502,16 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_khtel")
 unique_name_in_owner = true
 position = Vector2(576, 224)
 
+[node name="Sign" parent="." instance=ExtResource("35_d8xem")]
+position = Vector2(1026, 620)
+rotation = 0.171317
+
+[node name="Crane" parent="." node_paths=PackedStringArray("left_bound", "right_bound") instance=ExtResource("2_j786l")]
+unique_name_in_owner = true
+position = Vector2(569, 32)
+left_bound = NodePath("../CraneLeftBound")
+right_bound = NodePath("../CraneRightBound")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 unique_name_in_owner = true
 z_index = 2
@@ -685,12 +695,6 @@ gizmo_extents = 32.0
 position = Vector2(972, 0)
 gizmo_extents = 32.0
 
-[node name="Crane" parent="." node_paths=PackedStringArray("left_bound", "right_bound") instance=ExtResource("2_j786l")]
-unique_name_in_owner = true
-position = Vector2(569, 32)
-left_bound = NodePath("../CraneLeftBound")
-right_bound = NodePath("../CraneRightBound")
-
 [node name="SpawnTimer" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("6_fuj8g")
@@ -719,10 +723,6 @@ script = ExtResource("22_jykiw")
 unique_name_in_owner = true
 script = ExtResource("33_a6mjg")
 packages_per_day = 5
-
-[node name="Sign" parent="." instance=ExtResource("35_d8xem")]
-position = Vector2(1026, 620)
-rotation = 0.171317
 
 [node name="GameStopwatch" type="Node" parent="."]
 unique_name_in_owner = true
