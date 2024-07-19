@@ -17,5 +17,5 @@ func load_preferences():
 		return
 	
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), config.get_value("audio_level", "overall", 0))
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), config.get_value("audio_level", "music", -10))
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), config.get_value("audio_level", "music", -20))
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), config.get_value("audio_level", "sfx", 0))
