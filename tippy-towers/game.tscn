@@ -542,11 +542,11 @@ to_spawn = Array[PackedScene]([ExtResource("4_7rvxo"), ExtResource("8_jedqf"), E
 
 [node name="Level1" type="Node" parent="Camera2D/Platform/Spawner"]
 script = ExtResource("19_rpvsw")
-to_spawn = Array[PackedScene]([ExtResource("4_7rvxo"), ExtResource("8_jedqf"), ExtResource("9_hseeu"), ExtResource("4_7rvxo")])
+to_spawn = Array[PackedScene]([ExtResource("4_7rvxo"), ExtResource("4_7rvxo"), ExtResource("4_7rvxo"), ExtResource("8_jedqf"), ExtResource("9_hseeu")])
 
 [node name="Level2" type="Node" parent="Camera2D/Platform/Spawner"]
 script = ExtResource("19_rpvsw")
-to_spawn = Array[PackedScene]([ExtResource("20_eaue4"), ExtResource("20_icsjf"), ExtResource("4_7rvxo"), ExtResource("8_jedqf")])
+to_spawn = Array[PackedScene]([ExtResource("4_7rvxo"), ExtResource("4_7rvxo"), ExtResource("20_eaue4"), ExtResource("8_jedqf"), ExtResource("20_icsjf")])
 
 [node name="HighestPointDetector" type="ShapeCast2D" parent="Camera2D"]
 unique_name_in_owner = true
