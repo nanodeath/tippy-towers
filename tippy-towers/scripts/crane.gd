@@ -42,7 +42,7 @@ func _process(delta):
 		emit_signal("magnet_changed", magnet_activated)
 		_update_magnet()
 	
-	var hmultiplier := 2 if speed_up_horizontal else 1
+	var hmultiplier := 1.5 if speed_up_horizontal else 1.0
 	if Input.is_action_pressed("move_left") and not is_game_over:
 		current_speed = lerpf(current_speed, -speed * delta * hmultiplier, tween_speed)
 	elif Input.is_action_pressed("move_right") and not is_game_over:
@@ -56,7 +56,7 @@ func _physics_process(delta):
 	global_position.x = clampf(position.x + current_speed, left_bound.global_position.x, right_bound.global_position.x)
 	
 	if not game.is_game_over:
-		var vmultiplier := 2 if speed_up_vertical else 1
+		var vmultiplier := 1.5 if speed_up_vertical else 1.0
 		if Input.is_action_pressed("move_up"):
 			chain_anchor.position.y -= move_up_speed * delta * vmultiplier
 		elif Input.is_action_pressed("move_down"):
