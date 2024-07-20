@@ -1,0 +1,5 @@
+= NOTICE
+
+Content within the vendor directory is NOT released under the MIT license of the rest of the code; these are third-party assets with their own licenses. See the source.txt file in each subdirectory for details.
+
+I'm not distributing these assets; if you want them, please go do the `Source` URL listed in the corresponding source.txt file.

@@ -1,0 +1,23 @@
+= Handle with Care
+
+_Handle with Care_ is a game I made for a game jam running from 2024-07-12 to 2024-07-19, with the theme **0 Days Since Last Accident**. You work in a Fulfillment Center stacking boxes for...reasons? That's it, there's no hidden reason, you're just stacking boxes using a wobbly crane until they fall over and you have to restart.
+
+== Playing the Game ==
+
+Now that I've sold you on the game, you can play it online right in your web browser!
+
+https://nanodeath.itch.io/handle-with-care
+
+Requires a mouse+keyboard though, so I wouldn't recommend trying to play it on mobile/touch yet.
+
+== Making the Game ==
+
+While the game jam was a week long, I actually was making a different game for the first two days, which I got frustrated with and gave up on, called _The Dark Machine_. Originally it was supposed to be a dark twist on _The Incredible Machine_ and point-and-click adventure, but I was having a lot of trouble coming up with ideas for additional content. I think it was also out of scope for a week: after a day and a half (one of which being a weekend day), I had completed just one level so far. So I decided to scrap it and create _Handle with Care_ instead.
+
+"_Tippy Towers_"? That was the original name of this project, but I like "Handle with Care" better. It's less generic, but...more vague? I just thought it was funny.
+
+You can check out the livestreams where I work on the game at https://www.youtube.com/playlist?list=PLbH4r1N8PmBJCQXXpTDiY8UOEldlRK8bM[Godot 4 Livecoding].
+
+== License ==
+
+The content I created is licensed under https://spdx.org/licenses/MIT.html[the MIT license]. Everything under the tippy-towers/vendor/ subdirectory, while free, *has their own licenses* that you'll be bound by if you want to use those assets. See their respective source.txt files for details like the original URL and license.
