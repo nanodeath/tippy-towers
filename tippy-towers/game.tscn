@@ -211,6 +211,7 @@ scroll_active = false
 autowrap_mode = 0
 
 [node name="TimerDisplay" type="HBoxContainer" parent="CanvasLayer/MarginContainer"]
+visible = false
 layout_mode = 2
 script = ExtResource("2_ha0md")
 
@@ -699,7 +700,8 @@ gizmo_extents = 32.0
 unique_name_in_owner = true
 script = ExtResource("6_fuj8g")
 initial_time = 2.0
-time_interval = 15.0
+time_interval = 16.0
+min_time_interval = 12.0
 
 [node name="PackageLostZone" type="Area2D" parent="."]
 unique_name_in_owner = true
