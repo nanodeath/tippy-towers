@@ -77,7 +77,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 theme_override_colors/default_color = Color(0.89, 0.89, 0.89, 1)
 theme_override_font_sizes/normal_font_size = 32
-text = "a game jam game by Max Aller"
+text = "a game jam game by nanodeath"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
@@ -332,9 +332,9 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 20
 
-[node name="Max" type="Label" parent="CreditsWorld/VBoxContainer"]
+[node name="nanodeath" type="Label" parent="CreditsWorld/VBoxContainer"]
 layout_mode = 2
-text = "Game concept, design, art, implementation by Max Aller."
+text = "Game concept, design, art, implementation by nanodeath"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CreditsWorld/VBoxContainer"]
 layout_mode = 2
