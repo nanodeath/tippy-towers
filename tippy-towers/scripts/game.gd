@@ -9,5 +9,6 @@ func _ready():
 	%PackageLostZone.package_lost.connect(func(count): trigger_game_over())
 
 func trigger_game_over():
-	is_game_over = true
-	emit_signal("game_over")
+	if not is_game_over:
+		is_game_over = true
+		emit_signal("game_over")
