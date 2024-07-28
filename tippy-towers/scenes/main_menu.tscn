@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c0q1hpo66rhyb"]
+[gd_scene load_steps=19 format=3 uid="uid://c0q1hpo66rhyb"]
 
 [ext_resource type="Theme" uid="uid://cgudjne6cl7nl" path="res://main_menu.tres" id="1_3vhnt"]
 [ext_resource type="Script" path="res://scripts/title_block.gd" id="2_cvs8e"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://scripts/ui/credits.gd" id="11_fbfl2"]
 [ext_resource type="Script" path="res://scripts/ui/godot_link.gd" id="12_ritti"]
 [ext_resource type="PackedScene" uid="uid://dqssjjf62lnxe" path="res://scenes/go_back.tscn" id="12_v18x7"]
+[ext_resource type="Script" path="res://scripts/ui/godot_license.gd" id="14_g7a7s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j76jv"]
 size = Vector2(296, 122)
@@ -325,58 +326,77 @@ fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CreditsWorld"]
-custom_minimum_size = Vector2(400, 300)
+[node name="GoBack" parent="CreditsWorld" instance=ExtResource("12_v18x7")]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CreditsWorld"]
+custom_minimum_size = Vector2(700, 400)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/separation = 20
 
-[node name="nanodeath" type="Label" parent="CreditsWorld/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CreditsWorld/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="nanodeath" type="Label" parent="CreditsWorld/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 text = "Game concept, design, art, implementation by nanodeath"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CreditsWorld/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CreditsWorld/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Music" type="Label" parent="CreditsWorld/VBoxContainer/HBoxContainer"]
+[node name="Music" type="Label" parent="CreditsWorld/ScrollContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Music by OceanKing via pixabay:"
 
-[node name="LinkButton" type="LinkButton" parent="CreditsWorld/VBoxContainer/HBoxContainer"]
+[node name="LinkButton" type="LinkButton" parent="CreditsWorld/ScrollContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Source"
 uri = "https://pixabay.com/users/oceanking-44601375/"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="CreditsWorld/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="CreditsWorld/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="SFX" type="Label" parent="CreditsWorld/VBoxContainer/HBoxContainer2"]
+[node name="SFX" type="Label" parent="CreditsWorld/ScrollContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 text = "SFX by j1987 via pixabay:"
 
-[node name="LinkButton" type="LinkButton" parent="CreditsWorld/VBoxContainer/HBoxContainer2"]
+[node name="LinkButton" type="LinkButton" parent="CreditsWorld/ScrollContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 text = "Source"
 uri = "https://pixabay.com/sound-effects/cardboardbox-107634/"
 
-[node name="Godot" type="HBoxContainer" parent="CreditsWorld/VBoxContainer"]
+[node name="Godot" type="HBoxContainer" parent="CreditsWorld/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CreditsWorld/VBoxContainer/Godot"]
+[node name="Label" type="Label" parent="CreditsWorld/ScrollContainer/VBoxContainer/Godot"]
 layout_mode = 2
 text = "Made using "
 
-[node name="GodotLink" type="LinkButton" parent="CreditsWorld/VBoxContainer/Godot"]
+[node name="GodotLink" type="LinkButton" parent="CreditsWorld/ScrollContainer/VBoxContainer/Godot"]
 layout_mode = 2
 uri = "https://godotengine.org/"
 script = ExtResource("12_ritti")
 
-[node name="Disclaimer" type="Label" parent="CreditsWorld/VBoxContainer"]
-custom_minimum_size = Vector2(400, 200)
+[node name="Disclaimer" type="Label" parent="CreditsWorld/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 100)
 layout_mode = 2
 text = "The Amazon smile logo appearing in this game is a trademark of Amazon.com, Inc. This game is not affiliated with, endorsed, sponsored, or specifically approved by Amazon.com, Inc. All product and company names are trademarks™ or registered® trademarks of their respective holders. Use of them does not imply any affiliation with or endorsement by them."
 autowrap_mode = 3
 
-[node name="GoBack" parent="CreditsWorld" instance=ExtResource("12_v18x7")]
+[node name="GodotLicense" type="Label" parent="CreditsWorld/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
+text = "    This game uses Godot Engine, available under the following license:
+
+    Copyright (c) 2014-present Godot Engine contributors. Copyright (c) 2007-2014 Juan Linietsky, Ariel Manzur.
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+autowrap_mode = 3
+script = ExtResource("14_g7a7s")
